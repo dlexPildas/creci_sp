@@ -11,16 +11,17 @@ using System.Threading.Tasks;
 
 namespace CreciSP.Repository.Repositories
 {
-    public class ReadConnection : IReadConnection, IDisposable
+    public class ReadConnection : IReadConnection
     {
         private readonly IDbConnection connection;
         public ReadConnection(IConfiguration configuration)
         {
             connection = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
         }
+
         public async Task<ICollection<T>> QueryAsync<T>(string sql, object param = null, IDbTransaction transaction = null, CancellationToken cancellationToken = default)
         {
-            return (await connection.QueryAsync<T>(sql, param, transaction)).AsList();
+            return (await connection.QueryAsync<T>(sql)).AsList();
         }
         public async Task<T> QueryFirstOrDefaultAsync<T>(string sql, object param = null, IDbTransaction transaction = null, CancellationToken cancellationToken = default)
         {
@@ -29,10 +30,6 @@ namespace CreciSP.Repository.Repositories
         public async Task<T> QuerySingleAsync<T>(string sql, object param = null, IDbTransaction transaction = null, CancellationToken cancellationToken = default)
         {
             return await connection.QuerySingleAsync<T>(sql, param, transaction);
-        }
-        public void Dispose()
-        {
-            connection.Dispose();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using CreciSP.Repository.Context;
+﻿using CreciSP.Domain.Models;
+using CreciSP.Repository.Context;
 using CreciSP.Repository.Repositories;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,13 @@ namespace CreciSP.Domain.Services.RoomRepository
         public RoomRepository(DataContext dataContext) : base(dataContext)
         {
             _dataContext = dataContext;
+        }
+
+        public List<Room> GetAllRooms()
+        {
+           var result =  _dataContext.Rooms.ToList();
+
+            return result;
         }
     }
 }

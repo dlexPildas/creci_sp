@@ -2,6 +2,7 @@
 
 
 using CreciSP.Domain.Models;
+using CreciSP.Domain.Services.RoomRepository;
 using CreciSP.Repository.Repositories;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,12 @@ namespace CreciSP.Application.Services.RoomService
     public class RoomService : IRoomService
     {
         private readonly IReadConnection _readConnection;
+        private readonly IRoomRepository _roomRepository;
 
-        public RoomService(IReadConnection readConnection)
+        public RoomService(IReadConnection readConnection, IRoomRepository roomRepository)
         {
             _readConnection = readConnection;
+            _roomRepository = roomRepository;
         }
 
         public async Task<ICollection<Room>> GetRooms()
@@ -25,15 +28,12 @@ namespace CreciSP.Application.Services.RoomService
             try
             {
                 var result = await _readConnection.QueryAsync<Room>(cmd);
-
                 return result;
             }
             catch (Exception e)
             {
-                return null;
-            }
-
-            
+                throw new Exception("Erro ao Buscar os dados");
+            }            
         }
     }
 }

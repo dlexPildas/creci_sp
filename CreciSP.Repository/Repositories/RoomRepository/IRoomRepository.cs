@@ -1,4 +1,5 @@
-﻿using CreciSP.Repository.Repositories;
+﻿using CreciSP.Domain.Models;
+using CreciSP.Repository.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace CreciSP.Domain.Services.RoomRepository
 {
     public interface IRoomRepository : IPersist
     {
+        List<Room> GetAllRooms();
     }
 }

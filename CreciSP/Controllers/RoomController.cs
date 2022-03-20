@@ -22,14 +22,11 @@ namespace CreciSP.Mvc.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetRooms()
         {
-            var result =  _roomService.GetRooms();
-            return Ok(new
-            {
-                Id =  0,
-                Name = "Daniel"
-            });
+            var result = await _roomService.GetRooms();
+
+            return Ok(result);
         }
     }
 }
