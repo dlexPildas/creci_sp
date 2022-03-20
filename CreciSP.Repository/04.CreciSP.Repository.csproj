@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CreciSP.Domain\CreciSP.Domain.csproj" />
+    <ProjectReference Include="..\CreciSP.Domain\03.CreciSP.Domain.csproj" />
   </ItemGroup>
 
 </Project>
