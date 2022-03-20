@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreciSP.Mvc", "CreciSP\CreciSP.Mvc.csproj", "{D11F1B9B-A16D-4971-BC16-58FEC52BFFDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreciSP.Mvc", "CreciSP\CreciSP.Mvc.csproj", "{D11F1B9B-A16D-4971-BC16-58FEC52BFFDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreciSP.Domain", "CreciSP.Domain\CreciSP.Domain.csproj", "{153D085B-3A0B-4958-A5F6-BD3B0E8EF656}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreciSP.Domain", "CreciSP.Domain\CreciSP.Domain.csproj", "{153D085B-3A0B-4958-A5F6-BD3B0E8EF656}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreciSP.Repository", "CreciSP.Repository\CreciSP.Repository.csproj", "{6057C028-98A0-4F3D-BC9E-33F4167CB091}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreciSP.Repository", "CreciSP.Repository\CreciSP.Repository.csproj", "{6057C028-98A0-4F3D-BC9E-33F4167CB091}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreciSP.Test", "CreciSP.Test\CreciSP.Test.csproj", "{EC67D07F-7E87-49D2-8B0B-4D321E2FF5D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreciSP.Test", "CreciSP.Test\CreciSP.Test.csproj", "{EC67D07F-7E87-49D2-8B0B-4D321E2FF5D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreciSP.CrossCutting", "CreciSP.CrossCutting\CreciSP.CrossCutting.csproj", "{931C627B-890F-452C-898A-26976FAC8591}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreciSP.CrossCutting", "CreciSP.CrossCutting\CreciSP.CrossCutting.csproj", "{931C627B-890F-452C-898A-26976FAC8591}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

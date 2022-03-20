@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CreciSP.Domain.Services.User
+namespace CreciSP.Domain.Services.UserService
 {
-    public interface IUserService
+    public class UserService : IUserService
     {
     }
 }

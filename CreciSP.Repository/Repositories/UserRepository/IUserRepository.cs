@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CreciSP.Domain.Services.Room
+namespace CreciSP.Domain.Services.UserRepository
 {
-    public interface IRoomRepository : IPersist
+    public interface IUserRepository : IPersist
     {
     }
 }

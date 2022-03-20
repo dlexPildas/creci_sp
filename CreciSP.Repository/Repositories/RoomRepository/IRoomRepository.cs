@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CreciSP.Domain.Services.Booking
+namespace CreciSP.Domain.Services.RoomRepository
 {
-    public interface IBookingRepository : IPersist
+    public interface IRoomRepository : IPersist
     {
     }
 }
