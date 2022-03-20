@@ -14,12 +14,13 @@ namespace CreciSP.Domain.Models
 
         }
 
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string Cpf { get; set; }
-        public string Email { get; set; }
-        public UserTypeEnum Type { get; set; }
-        public bool Status { get; set; }
-        public string Password { get; set; }
+        public Guid Id { get;  private set; }
+        public string Name { get;  private set; }
+        public string Cpf { get;  private set; }
+        public string Email { get;  private set; }
+        public UserTypeEnum Type { get;  private set; }
+        public bool Status { get;  private set; }
+        public string Password { get;  private set; }
+        public virtual ICollection<Booking> Bookings { get;  private set; }
     }
 }
