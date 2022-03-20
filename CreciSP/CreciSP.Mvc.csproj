@@ -14,6 +14,16 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.12" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.15" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.15">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.15" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.15">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +36,11 @@
   <ItemGroup>
     <Folder Include="Dtos\" />
     <Folder Include="AutoMapper\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CreciSP.Domain\CreciSP.Domain.csproj" />
+    <ProjectReference Include="..\CreciSP.Repository\CreciSP.Repository.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
