@@ -32,8 +32,7 @@ namespace CreciSP
 
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-           
-
+            services.AddAutoMapper(GetType().Assembly);
 
             DependencyInjection.InjectDependencies(services, Configuration);
 
