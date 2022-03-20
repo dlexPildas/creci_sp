@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Zjw1PX29NtFWfDJ6x010NZoyo3XOKV8PY9y2M4SyAqVdy5mRB+Ozo6k6cZYu7in3pCPQTJahHknBWOSaL/pgLQ==",
+  "dgSpecHash": "xn3rtzUOiFgcqn3hUrZAyJgL/De2JmCUMeX4YnYsEj+bb+EuMa3Z4MIdDSCkotFMQRTHmhjUSs+IFoCXLL9jWQ==",
   "success": true,
-  "projectFilePath": "C:\\BeVeloster\\projeto_mvc_creci\\CreciSP\\CreciSP.Domain\\CreciSP.Domain.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\BeVeloster\\Projeto\\CreciSP.Domain\\CreciSP.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bruno.santos\\.nuget\\packages\\fluentvalidation\\10.4.0\\fluentvalidation.10.4.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -8,19 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\olive\\.nuget\\packages\\": {}
+    "C:\\Users\\bruno.santos\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\BeVeloster\\projeto_mvc_creci\\CreciSP\\CreciSP.Test\\CreciSP.Test.csproj",
+      "projectUniqueName": "C:\\BeVeloster\\Projeto\\CreciSP.Test\\CreciSP.Test.csproj",
       "projectName": "CreciSP.Test",
-      "projectPath": "C:\\BeVeloster\\projeto_mvc_creci\\CreciSP\\CreciSP.Test\\CreciSP.Test.csproj",
-      "packagesPath": "C:\\Users\\olive\\.nuget\\packages\\",
-      "outputPath": "C:\\BeVeloster\\projeto_mvc_creci\\CreciSP\\CreciSP.Test\\obj\\",
+      "projectPath": "C:\\BeVeloster\\Projeto\\CreciSP.Test\\CreciSP.Test.csproj",
+      "packagesPath": "C:\\Users\\bruno.santos\\.nuget\\packages\\",
+      "outputPath": "C:\\BeVeloster\\Projeto\\CreciSP.Test\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\olive\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bruno.santos\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -60,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
       }
     }
   }

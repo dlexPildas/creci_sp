@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\BeVeloster\\projeto_mvc_creci\\CreciSP\\CreciSP.Domain\\CreciSP.Domain.csproj": {}
+    "C:\\BeVeloster\\Projeto\\CreciSP.Domain\\CreciSP.Domain.csproj": {}
   },
   "projects": {
-    "C:\\BeVeloster\\projeto_mvc_creci\\CreciSP\\CreciSP.Domain\\CreciSP.Domain.csproj": {
+    "C:\\BeVeloster\\Projeto\\CreciSP.Domain\\CreciSP.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\BeVeloster\\projeto_mvc_creci\\CreciSP\\CreciSP.Domain\\CreciSP.Domain.csproj",
+        "projectUniqueName": "C:\\BeVeloster\\Projeto\\CreciSP.Domain\\CreciSP.Domain.csproj",
         "projectName": "CreciSP.Domain",
-        "projectPath": "C:\\BeVeloster\\projeto_mvc_creci\\CreciSP\\CreciSP.Domain\\CreciSP.Domain.csproj",
-        "packagesPath": "C:\\Users\\olive\\.nuget\\packages\\",
-        "outputPath": "C:\\BeVeloster\\projeto_mvc_creci\\CreciSP\\CreciSP.Domain\\obj\\",
+        "projectPath": "C:\\BeVeloster\\Projeto\\CreciSP.Domain\\CreciSP.Domain.csproj",
+        "packagesPath": "C:\\Users\\bruno.santos\\.nuget\\packages\\",
+        "outputPath": "C:\\BeVeloster\\Projeto\\CreciSP.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\olive\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bruno.santos\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,6 +39,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[10.4.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -54,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
         }
       }
     }

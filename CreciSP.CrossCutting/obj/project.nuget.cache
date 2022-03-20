@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mXWL9Xufdw+8yRp777YRHIypUfzuJpsgxB5zaNB3JxB1vywHWns7D1VmaIcdvZoLz76mxbPsuHjtyfUGP9EDOg==",
+  "dgSpecHash": "JijsSWTBcC9jHqsCaXKIlLozpT3MUtRelyL5ScOUfaMgG/5BSg4su7tpN8kxyNdGKqdYqJXmtZLWscRD9w5ISQ==",
   "success": true,
-  "projectFilePath": "C:\\BeVeloster\\projeto_mvc_creci\\CreciSP\\CreciSP.CrossCutting\\CreciSP.CrossCutting.csproj",
+  "projectFilePath": "C:\\BeVeloster\\Projeto\\CreciSP.CrossCutting\\CreciSP.CrossCutting.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

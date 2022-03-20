@@ -16,8 +16,8 @@ namespace CreciSP.Domain.Models
 
         public Guid Id { get;  private set; }
         public int Number { get;  private set; }
-        public string Floor { get; private set; }
-        public string Capacity { get;  private set; }
+        public int Floor { get; private set; }
+        public int Capacity { get;  private set; }
         public RoomTypeEnum Type { get;  private set; }
 
         public virtual ICollection<Booking> Bookings { get;  private set; }

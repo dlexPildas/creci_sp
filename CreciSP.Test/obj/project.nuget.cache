@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KW1iGeqP880WLFOX3P85Mw31zw8nRR+t0zJ5anLQJFEX/3bULU/tadFTL1P/xJmEnO7zjbWAgsDLA0SSSeBA4A==",
+  "dgSpecHash": "hUHNP8yfUhXd+3sl8f2aVo7L9pusIQyI9Y9BUBeBc4WsUubPFV0njFGD60E6SES5N1dIcngavR/eC0nDrgC+lw==",
   "success": true,
-  "projectFilePath": "C:\\BeVeloster\\projeto_mvc_creci\\CreciSP\\CreciSP.Test\\CreciSP.Test.csproj",
+  "projectFilePath": "C:\\BeVeloster\\Projeto\\CreciSP.Test\\CreciSP.Test.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
