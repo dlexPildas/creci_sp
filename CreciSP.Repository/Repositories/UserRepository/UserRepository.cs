@@ -1,4 +1,6 @@
-﻿using CreciSP.Repository.Context;
+﻿using CreciSP.Domain.Enum;
+using CreciSP.Domain.Models;
+using CreciSP.Repository.Context;
 using CreciSP.Repository.Repositories;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,13 @@ namespace CreciSP.Domain.Services.UserRepository
         public UserRepository(DataContext dataContext) : base(dataContext)
         {
             _dataContext = dataContext;
+        }
+
+        public Task<ICollection<User>> GetUsersByFilters(string nome, string email, UserTypeEnum type)
+        {
+            //var cmd = $@"";
+            //var result = await GetListResultByQueryAsync<TermCourseOfferingGroupDto>(sql, new { academicTermId, classLevelId });
+            return null;
         }
     }
 }
