@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CreciSP.Domain.Services.User
 {
-    public class UserService
+    public class UserService : IUserService
     {
     }
 }

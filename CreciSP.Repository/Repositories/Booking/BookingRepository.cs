@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
+using CreciSP.Repository.Context;
+using CreciSP.Repository.Repositories;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CreciSP.Domain.Services.Booking
 {
-    internal class BookingRepository
+    public class BookingRepository : Persist, IBookingRepository
     {
+        private readonly DataContext _dataContext;
+
+        public BookingRepository(DataContext dataContext) : base(dataContext)
+        {
+            _dataContext = dataContext;
+        }
     }
 }
