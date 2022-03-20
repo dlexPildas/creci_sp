@@ -13,12 +13,15 @@ namespace CreciSP.Domain.Models
             
         }
 
-        public Guid Id { get; set; }
-        public DateTime Date { get; set; }
-        public TimeSpan StartTime { get; set; }
-        public TimeSpan EndTime { get; set; }
+        public Guid Id { get;  private set; }
+        public DateTime Date { get;  private set; }
+        public TimeSpan StartTime { get;  private set; }
+        public TimeSpan EndTime { get;  private set; }
 
-        public int RoomId { get; set; }
-        public Room Room { get; set; }
+        public Guid RoomId { get;  private set; }
+        public virtual Room Room { get;  private set; }
+
+        public Guid UserId { get;  private set; }
+        public virtual User User { get;  private set; }
     }
 }

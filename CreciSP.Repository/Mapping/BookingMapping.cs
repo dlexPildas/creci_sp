@@ -13,19 +13,23 @@ namespace CreciSP.Repository.Mapping
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Date)
-                .IsRequired();
+                   .IsRequired();
 
             builder.Property(x => x.StartTime)
-                .IsRequired();
+                   .IsRequired();
             
             builder.Property(x => x.EndTime)
-                .IsRequired();
+                   .IsRequired();
 
-            builder
-                .HasOne(x => x.Room)
-                .WithMany(x => x.Bookings)
-                .HasForeignKey(x => x.RoomId)
-                .HasConstraintName("FK_Room_Booking");
+            builder.HasOne(x => x.Room)
+                   .WithMany(x => x.Bookings)
+                   .HasForeignKey(x => x.RoomId)
+                   .HasConstraintName("FK_Room_Booking");
+
+            builder.HasOne(x => x.User)
+                   .WithMany(x => x.Bookings)
+                   .HasForeignKey(x => x.UserId)
+                   .HasConstraintName("FK_User_Booking");
         }
     }
 }

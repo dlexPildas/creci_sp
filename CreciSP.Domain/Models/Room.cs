@@ -14,12 +14,12 @@ namespace CreciSP.Domain.Models
             
         }
 
-        public Guid Id { get; set; }
-        public int Number { get; set; }
-        public string Floor { get; set; }
-        public string Capacity { get; set; }
-        public RoomTypeEnum Type { get; set; }
+        public Guid Id { get;  private set; }
+        public int Number { get;  private set; }
+        public string Floor { get; private set; }
+        public string Capacity { get;  private set; }
+        public RoomTypeEnum Type { get;  private set; }
 
-        public virtual ICollection<Booking> Bookings { get; set; }
+        public virtual ICollection<Booking> Bookings { get;  private set; }
     }
 }
