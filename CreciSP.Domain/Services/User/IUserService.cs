@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CreciSP.Domain.Services.User
 {
-    internal interface IUserService
+    public interface IUserService
     {
     }
 }
