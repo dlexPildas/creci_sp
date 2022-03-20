@@ -16,5 +16,10 @@ namespace CreciSP.Repository.Context
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Booking> Bookings { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(DataContext).Assembly);
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
