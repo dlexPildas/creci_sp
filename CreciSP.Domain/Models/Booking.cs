@@ -18,6 +18,7 @@ namespace CreciSP.Domain.Models
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
 
+        public virtual int RoomId { get; set; }
         public virtual Room Room { get; set; }
     }
 }
