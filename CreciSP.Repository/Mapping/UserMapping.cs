@@ -13,15 +13,19 @@ namespace CreciSP.Repository.Mapping
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Name)
+                   .HasMaxLength(255)
                    .IsRequired();
 
             builder.Property(x => x.Cpf)
+                   .HasMaxLength(11)
                    .IsRequired();
 
             builder.Property(x => x.Email)
+                   .HasMaxLength(255)
                    .IsRequired();
 
             builder.Property(x => x.Password)
+                   .HasMaxLength(255)
                    .IsRequired();
 
             builder.Property(x => x.Status)
