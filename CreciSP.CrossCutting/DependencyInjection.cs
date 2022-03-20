@@ -1,14 +1,12 @@
-﻿using CreciSP.Domain.Services.Booking;
-using CreciSP.Domain.Services.Room;
-using CreciSP.Domain.Services.User;
+﻿using CreciSP.Domain.Services.BookingRepository;
+using CreciSP.Domain.Services.BookingService;
+using CreciSP.Domain.Services.RoomRepository;
+using CreciSP.Domain.Services.RoomService;
+using CreciSP.Domain.Services.UserRepository;
+using CreciSP.Domain.Services.UserService;
 using CreciSP.Repository.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CreciSP.CrossCutting
 {
@@ -24,6 +22,7 @@ namespace CreciSP.CrossCutting
 
             #region Repositories
             services.AddScoped<IPersist, Persist>();
+            services.AddScoped<IReadConnection, ReadConnection>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRoomRepository, RoomRepository>();
             services.AddScoped<IBookingRepository, BookingRepository>();

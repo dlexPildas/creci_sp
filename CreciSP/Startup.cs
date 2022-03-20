@@ -1,5 +1,4 @@
 using CreciSP.CrossCutting;
-using CreciSP.Domain.Services.User;
 using CreciSP.Repository.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,7 +28,7 @@ namespace CreciSP
 
             //DependencyInjection.InjectDependencies(services, Configuration);
 
-            services.AddScoped<IUserService, UserService>();
+            //services.AddScoped<IUserService, UserService>();
 
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory

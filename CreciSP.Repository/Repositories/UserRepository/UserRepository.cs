@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CreciSP.Domain.Services.Room
+namespace CreciSP.Domain.Services.UserRepository
 {
-    public class RoomRepository : Persist, IRoomRepository 
+    public class UserRepository : Persist, IUserRepository
     {
         private readonly DataContext _dataContext;
 
-        public RoomRepository(DataContext dataContext) : base(dataContext)
+        public UserRepository(DataContext dataContext) : base(dataContext)
         {
             _dataContext = dataContext;
         }

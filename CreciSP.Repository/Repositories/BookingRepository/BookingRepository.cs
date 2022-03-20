@@ -4,7 +4,7 @@ using CreciSP.Repository.Repositories;
 using System;
 using System.Linq;
 
-namespace CreciSP.Domain.Services.Booking
+namespace CreciSP.Domain.Services.BookingRepository
 {
     public class BookingRepository : Persist, IBookingRepository
     {
