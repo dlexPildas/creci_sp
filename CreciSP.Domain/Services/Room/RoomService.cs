@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CreciSP.Domain.Services.Room
 {
-    internal class RoomService
+    public class RoomService : IRoomService
     {
     }
 }

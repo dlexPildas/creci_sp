@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace CreciSP.Repository.Repositories
 {
-    public class Repository : IRepository
+    public class Persist : IPersist
     {
         private readonly DataContext _dataContext;
 
-        public Repository(DataContext dataContext)
+        public Persist(DataContext dataContext)
         {
             _dataContext = dataContext;
 

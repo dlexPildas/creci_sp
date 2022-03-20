@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CreciSP.Repository.Repositories
 {
-    public interface IRepository
+    public interface IPersist
     {
         void Add<T>(T entity) where T : class;
         void Update<T>(T entity) where T : class;
