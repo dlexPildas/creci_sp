@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CreciSP.Application\CreciSP.Application.csproj" />
     <ProjectReference Include="..\CreciSP.Domain\CreciSP.Domain.csproj" />
     <ProjectReference Include="..\CreciSP.Repository\CreciSP.Repository.csproj" />
   </ItemGroup>

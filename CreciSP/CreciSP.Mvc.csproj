@@ -36,8 +36,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CreciSP.CrossCutting\CreciSP.CrossCutting.csproj" />
-    <ProjectReference Include="..\CreciSP.Domain\CreciSP.Domain.csproj" />
-    <ProjectReference Include="..\CreciSP.Repository\CreciSP.Repository.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

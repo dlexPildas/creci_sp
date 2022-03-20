@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CreciSP.Domain.Services.UserService
+namespace CreciSP.Application.Services.UserService
 {
     public class UserService : IUserService
     {

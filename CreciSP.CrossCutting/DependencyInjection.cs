@@ -1,9 +1,9 @@
 ﻿using CreciSP.Domain.Services.BookingRepository;
-using CreciSP.Domain.Services.BookingService;
+using CreciSP.Application.Services.BookingService;
 using CreciSP.Domain.Services.RoomRepository;
-using CreciSP.Domain.Services.RoomService;
+using CreciSP.Application.Services.RoomService;
 using CreciSP.Domain.Services.UserRepository;
-using CreciSP.Domain.Services.UserService;
+using CreciSP.Application.Services.UserService;
 using CreciSP.Repository.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CreciSP.Domain.Services.BookingService
+namespace CreciSP.Application.Services.BookingService
 {
-    public class BookingService : IBookingService
+    public interface IBookingService
     {
     }
 }

@@ -18,7 +18,7 @@ namespace CreciSP.Repository.Repositories
         {
             connection = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
         }
-        public async Task<IReadOnlyList<T>> QueryAsync<T>(string sql, object param = null, IDbTransaction transaction = null, CancellationToken cancellationToken = default)
+        public async Task<ICollection<T>> QueryAsync<T>(string sql, object param = null, IDbTransaction transaction = null, CancellationToken cancellationToken = default)
         {
             return (await connection.QueryAsync<T>(sql, param, transaction)).AsList();
         }

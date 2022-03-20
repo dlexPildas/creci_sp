@@ -26,7 +26,7 @@ namespace CreciSP
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
 
-            //DependencyInjection.InjectDependencies(services, Configuration);
+            DependencyInjection.InjectDependencies(services, Configuration);
 
             //services.AddScoped<IUserService, UserService>();
 
