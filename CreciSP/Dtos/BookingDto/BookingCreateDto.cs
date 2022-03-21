@@ -7,7 +7,7 @@ namespace CreciSP.Mvc.Dtos.BookingDto
         public DateTime Date { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
-        public Guid Userd { get; set; }
+        public Guid UserdId { get; set; }
         public Guid RoomId { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace CreciSP.Application.Services.RoomService
 
         Task<ICollection<Room>> GetRoomsByFilter(RoomFilter roomFilter);
 
+        Task<bool> DeleteRoom(Guid id);
 
 
     }
