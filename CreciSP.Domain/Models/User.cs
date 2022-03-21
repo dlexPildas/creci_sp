@@ -8,11 +8,7 @@ using System.Threading.Tasks;
 namespace CreciSP.Domain.Models
 {
     public class User
-    {
-        public User()
-        {
-
-        }
+    {  
 
         public Guid Id { get;  private set; }
         public string Name { get;  private set; }
@@ -23,6 +19,18 @@ namespace CreciSP.Domain.Models
         public string Password { get;  private set; }
         public virtual ICollection<Booking> Bookings { get;  private set; }
 
+        public User() {}
+
+        public User(Guid id, string name, string cpf, string email, UserTypeEnum type, bool status, string password)
+        {
+            Id = id;
+            Name = name;
+            Cpf = cpf;
+            Email = email;
+            Type = type;
+            Status = status;
+            Password = password;
+        }
 
         public void ChangePassword(string newPassord)
         {
