@@ -22,5 +22,7 @@ namespace CreciSP.Application.Services.UserService
         Task<bool> ActiveUser(Guid id);
 
         Task<bool> UpdateUser(User user);
+
+        Task<bool> ChangePasswordUser(Guid id, string password, string newPassword);
     }
 }
