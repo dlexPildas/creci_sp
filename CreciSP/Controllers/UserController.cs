@@ -48,12 +48,12 @@ namespace CreciSP.Mvc.Controllers
         }
 
         /// <summary>
-        /// Buscar lista de usuários com base nos parâmetros
+        /// Buscar coleção de usuários com base nos parâmetros
         /// </summary>
         /// <param name="nome"></param>
         /// <param name="email"></param>
         /// <param name="type"></param>
-        /// <returns>Lsta de Usuários</returns>
+        /// <returns>Coleção de Usuários</returns>
         [HttpGet]
         public async Task<IActionResult> GetUsersByFilters([FromQuery]UserFilter userfilter)
         {
@@ -74,15 +74,21 @@ namespace CreciSP.Mvc.Controllers
         }
 
         /// <summary>
-        /// Desativer Usuário
+        /// Desativar Usuário
         /// </summary>
         /// <param name="id"></param>
         /// <returns>True se operação for realizada com Sucesso</returns>
         [HttpPut]
         [Route("{id}/inactive")]
-        public async Task<bool> InactiveUser(Guid id)
+        public async Task<IActionResult> InactiveUser(Guid id)
         {
-            return await _userService.InactiveUser(id);
+             await _userService.InactiveUser(id);
+
+            ModelState.AddValidationResult(_userService.ValidationResult());
+            if (!ModelState.IsValid)
+                return Conflict(ModelState.GetValidationProblemDetails());
+
+            return Ok();
         }
 
         /// <summary>
@@ -92,9 +98,15 @@ namespace CreciSP.Mvc.Controllers
         /// <returns>True se operação for realizada com Sucesso</returns>
         [HttpPut]
         [Route("{id}/active")]
-        public async Task<bool> ActiveUser(Guid id)
+        public async Task<IActionResult> ActiveUser(Guid id)
         {
-            return await _userService.ActiveUser(id);
+            await _userService.ActiveUser(id);
+
+            ModelState.AddValidationResult(_userService.ValidationResult());
+            if (!ModelState.IsValid)
+                return Conflict(ModelState.GetValidationProblemDetails());
+
+            return Ok();
         }
 
         /// <summary>

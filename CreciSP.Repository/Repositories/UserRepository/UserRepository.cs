@@ -31,13 +31,12 @@ namespace CreciSP.Domain.Services.UserRepository
                                ,[Email]
                                ,[Type]
                                ,[Status]
-                               ,[Password]
                            FROM [dbo].[User] u
                            WHERE ({userfilter.Name} is null OR u.[Name] like '%{userfilter.Name}%') AND
                            ({userfilter.Cpf} is null OR u.[Cpf] like '%{userfilter.Cpf}%') AND
                            ({userfilter.Email} is null OR u.[Email] like '%{userfilter.Email}%') AND
                            ({userfilter.Type} is null OR u.[Type] = {userfilter.Type}') AND
-                           ({userfilter.Status} is null OR u.[Type] = {userfilter.Status})";
+                           ({userfilter.Status} is null OR u.[Status] = {userfilter.Status})";
 
             var result = await _readConnection.QueryAsync<User>(cmd);
             return result;

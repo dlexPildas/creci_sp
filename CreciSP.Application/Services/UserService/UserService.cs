@@ -71,6 +71,11 @@ namespace CreciSP.Application.Services.UserService
         public async Task<bool> InactiveUser(Guid id)
         {
             var user = await _userRepository.GetUserById(id);
+            if (user == null)
+            {
+                AddValidationFailure("Usuário não encontrado!");
+                return false;
+            }
             user.InactiveUser();
             return await _userRepository.SaveChangesAsync();
         }
@@ -83,6 +88,12 @@ namespace CreciSP.Application.Services.UserService
         public async Task<bool> ActiveUser(Guid id)
         {
             var user = await _userRepository.GetUserById(id);
+            if (user == null)
+            {
+                AddValidationFailure("Usuário não encontrado!");
+                return false;
+            }
+
             user.ActiveUser();
             return await _userRepository.SaveChangesAsync();
         }
@@ -95,6 +106,12 @@ namespace CreciSP.Application.Services.UserService
         public async Task<bool> UpdateUser(User user)
         {
             var userDataBase = await _userRepository.GetUserById(user.Id);
+            if (userDataBase == null)
+            {
+                AddValidationFailure("Usuário não encontrado!");
+                return false;
+            }
+
             userDataBase.UpdateUser(user);
             return await _userRepository.SaveChangesAsync();
         }
