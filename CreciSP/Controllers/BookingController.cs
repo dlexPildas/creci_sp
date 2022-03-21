@@ -1,11 +1,9 @@
 ﻿using _01.CreciSP.Mvc.Extensions;
 using AutoMapper;
 using CreciSP.Application.Services.BookingService;
-using CreciSP.Application.Services.RoomService;
 using CreciSP.Domain.Filters;
 using CreciSP.Domain.Models;
 using CreciSP.Mvc.Dtos.BookingDto;
-using CreciSP.Mvc.Dtos.RoomDto;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -30,89 +28,55 @@ namespace CreciSP.Mvc.Controllers
         }
 
         /// <summary>
-        /// Cria uma Sala
+        /// Cria uma Reserva
         /// </summary>
-        /// <param name="userDto"></param>
+        /// <param name="bookingDto"></param>
         /// <returns>True se operação for realizada com Sucesso</returns>
-        //[HttpPost]
-        //public async Task<IActionResult> Create(BookingCreateDto roomDto)
-        //{
-        //    var room = _mapper.Map<Room>(roomDto);
+        [HttpPost]
+        public async Task<IActionResult> Create(BookingCreateDto bookingDto)
+        {
+            var booking = _mapper.Map<Booking>(bookingDto);
 
-        //    ModelState.AddValidationResult(await _validatorFactory.GetValidator<Room>().ValidateAsync(room));
-        //    if (!ModelState.IsValid)
-        //        return Conflict(ModelState.GetValidationProblemDetails());
+            ModelState.AddValidationResult(await _validatorFactory.GetValidator<Booking>().ValidateAsync(booking));
+            if (!ModelState.IsValid)
+                return Conflict(ModelState.GetValidationProblemDetails());
 
-        //    var result = await bookingService.Create(room);
+            var result = await _bookingService.Create(booking);
 
-        //    return Ok(result);
-        //}
+            return Ok(result);
+        }
 
-        ///// <summary>
-        ///// Buscar Salas pelos filtros
-        ///// </summary>
-        ///// <param name="roomFilter"></param>
-        ///// <returns>Coleção de Salas</returns>
-        //[HttpGet]
-        //public async Task<IActionResult> GetRoomsByFilter(RoomFilter roomFilter)
-        //{
-        //    var result = await _roomService.GetRoomsByFilter(roomFilter);
+        /// <summary>
+        /// Buscar Reservas pelos filtros
+        /// </summary>
+        /// <param name="roomFilter"></param>
+        /// <returns>Coleção de Reservas</returns>
+        [HttpGet]
+        public async Task<IActionResult> GetBookingsByFilter(BookingFilter roomFilter)
+        {
+            var result = await _bookingService.GetBookingsByFilter(roomFilter);
 
-        //    return Ok(result);
-        //}
+            return Ok(result);
+        }
 
-        ///// <summary>
-        ///// Desativar Sala
-        ///// </summary>
-        ///// <param name="id"></param>
-        ///// <returns>True se operação for realizada com Sucesso</returns>
-        //[HttpPut]
-        //[Route("{id}/inactive")]
-        //public async Task<IActionResult> InactiveUser(Guid id)
-        //{
-        //    await _roomService.InactiveRoom(id);
+        
 
-        //    ModelState.AddValidationResult(_roomService.ValidationResult());
-        //    if (!ModelState.IsValid)
-        //        return Conflict(ModelState.GetValidationProblemDetails());
+        /// <summary>
+        /// Deletar Sala
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Sucesso se operação for realizada com Sucesso</returns>
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> DeleteBooking(Guid id)
+        {
+            await _bookingService.DeleteBooking(id);
 
-        //    return Ok();
-        //}
+            ModelState.AddValidationResult(_bookingService.ValidationResult());
+            if (!ModelState.IsValid)
+                return Conflict(ModelState.GetValidationProblemDetails());
 
-        ///// <summary>
-        ///// Ativar Usuário
-        ///// </summary>
-        ///// <param name="id"></param>
-        ///// <returns>True se operação for realizada com Sucesso</returns>
-        //[HttpPut]
-        //[Route("{id}/active")]
-        //public async Task<IActionResult> ActiveUser(Guid id)
-        //{
-        //    await _roomService.ActiveRoom(id);
-
-        //    ModelState.AddValidationResult(_roomService.ValidationResult());
-        //    if (!ModelState.IsValid)
-        //        return Conflict(ModelState.GetValidationProblemDetails());
-
-        //    return Ok();
-        //}
-
-        ///// <summary>
-        ///// Deletar Sala
-        ///// </summary>
-        ///// <param name="id"></param>
-        ///// <returns>Sucesso se operação for realizada com Sucesso</returns>
-        //[HttpDelete]
-        //[Route("{id}")]
-        //public async Task<IActionResult> DeleteRoom(Guid id)
-        //{
-        //    await _roomService.DeleteRoom(id);
-
-        //    ModelState.AddValidationResult(_roomService.ValidationResult());
-        //    if (!ModelState.IsValid)
-        //        return Conflict(ModelState.GetValidationProblemDetails());
-
-        //    return Ok();
-        //}
+            return Ok();
+        }
     }
 }

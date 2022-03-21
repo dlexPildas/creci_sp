@@ -1,4 +1,6 @@
 ﻿using _03.CreciSP.Domain.Notifier;
+using CreciSP.Domain.Filters;
+using CreciSP.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +11,11 @@ namespace CreciSP.Application.Services.BookingService
 {
     public interface IBookingService : INotifierService
     {
+        Task<bool> Create(Booking booking);
+
+        Task<ICollection<Booking>> GetBookingsByFilter(BookingFilter roomFilter);
+
+        Task<bool> DeleteBooking(Guid id);
+
     }
 }
