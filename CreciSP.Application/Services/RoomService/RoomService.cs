@@ -29,7 +29,7 @@ namespace CreciSP.Application.Services.RoomService
         /// <summary>
         /// Cria uma Sala
         /// </summary>
-        /// <param name="userDto"></param>
+        /// <param name="room"></param>
         /// <returns>True se operação for realizada com Sucesso</returns>
         public async Task<bool> Create(Room room)
         {
@@ -39,7 +39,7 @@ namespace CreciSP.Application.Services.RoomService
 
        
         /// <summary>
-        /// Desativer Usuário
+        /// Desativer Sala
         /// </summary>
         /// <param name="id"></param>
         /// <returns>True se operação for realizada com Sucesso</returns>
@@ -57,7 +57,7 @@ namespace CreciSP.Application.Services.RoomService
         }
 
         /// <summary>
-        /// Active Usuário
+        /// Active Sala
         /// </summary>
         /// <param name="id"></param>
         /// <returns>True se operação for realizada com Sucesso</returns>
