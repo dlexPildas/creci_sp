@@ -1,4 +1,5 @@
-﻿using CreciSP.Domain.Enum;
+﻿using _03.CreciSP.Domain.Notifier;
+using CreciSP.Domain.Enum;
 using CreciSP.Domain.Filters;
 using CreciSP.Domain.Models;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CreciSP.Application.Services.UserService
 {
-    public interface IUserService
+    public interface IUserService : INotifierService
     {
         Task<bool> Create(User user);
 

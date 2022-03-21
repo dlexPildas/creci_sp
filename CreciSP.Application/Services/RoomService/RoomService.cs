@@ -1,16 +1,18 @@
 ﻿
 
 
+using _03.CreciSP.Domain.Notifier;
 using CreciSP.Domain.Models;
 using CreciSP.Domain.Services.RoomRepository;
 using CreciSP.Repository.Repositories;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CreciSP.Application.Services.RoomService
 {
-    public class RoomService : IRoomService
+    public class RoomService : NotifierService, IRoomService
     {
         private readonly IReadConnection _readConnection;
         private readonly IRoomRepository _roomRepository;
@@ -19,6 +21,11 @@ namespace CreciSP.Application.Services.RoomService
         {
             _readConnection = readConnection;
             _roomRepository = roomRepository;
+        }
+
+        public override ValidationResult ValidationResult()
+        {
+            return GetValidationResult();
         }
 
         public async Task<ICollection<Room>> GetRooms()

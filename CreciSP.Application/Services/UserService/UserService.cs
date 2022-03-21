@@ -1,8 +1,10 @@
-﻿using CreciSP.Domain.Enum;
+﻿using _03.CreciSP.Domain.Notifier;
+using CreciSP.Domain.Enum;
 using CreciSP.Domain.Filters;
 using CreciSP.Domain.Models;
 using CreciSP.Domain.Services.UserRepository;
 using CreciSP.Repository.Repositories;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace CreciSP.Application.Services.UserService
 {
-    public class UserService : IUserService
+    public class UserService : NotifierService, IUserService
     {
         private readonly IReadConnection _readConnection;
         private readonly IUserRepository _userRepository;
@@ -22,6 +24,11 @@ namespace CreciSP.Application.Services.UserService
             _userRepository = userRepository;
         }
 
+        public override ValidationResult ValidationResult()
+        {
+            return GetValidationResult();
+        }
+
         /// <summary>
         /// Cria um Usuário
         /// </summary>
@@ -29,7 +36,8 @@ namespace CreciSP.Application.Services.UserService
         /// <returns>True se operação for realizada com Sucesso</returns>
         public async Task<bool> Create(User user)
         {
-             _userRepository.Add(user);
+            _userRepository.Add(user);
+
             return await _userRepository.SaveChangesAsync();
         }
 
@@ -99,8 +107,18 @@ namespace CreciSP.Application.Services.UserService
         public async Task<bool> ChangePasswordUser(Guid id, string password, string newPassword)
         {
             var userDataBase = await _userRepository.GetUserById(id);
+
+            if (userDataBase == null)
+            {
+                AddValidationFailure("Usuário não encontrado!");
+                return false;
+            }
+            
             if (userDataBase.Password != password)
-                throw new Exception();
+            {
+                AddValidationFailure("A senha atual está incorreta!");
+                return false;
+            }                
 
             userDataBase.ChangePassword(newPassword);
 

@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.CreciSP.Mvc", "CreciSP\01.CreciSP.Mvc.csproj", "{D11F1B9B-A16D-4971-BC16-58FEC52BFFDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_01.CreciSP.Mvc", "CreciSP\_01.CreciSP.Mvc.csproj", "{D11F1B9B-A16D-4971-BC16-58FEC52BFFDE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.CreciSP.Domain", "CreciSP.Domain\03.CreciSP.Domain.csproj", "{153D085B-3A0B-4958-A5F6-BD3B0E8EF656}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_03.CreciSP.Domain", "CreciSP.Domain\_03.CreciSP.Domain.csproj", "{153D085B-3A0B-4958-A5F6-BD3B0E8EF656}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.CreciSP.Repository", "CreciSP.Repository\04.CreciSP.Repository.csproj", "{6057C028-98A0-4F3D-BC9E-33F4167CB091}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_04.CreciSP.Repository", "CreciSP.Repository\_04.CreciSP.Repository.csproj", "{6057C028-98A0-4F3D-BC9E-33F4167CB091}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.CreciSP.Test", "CreciSP.Test\06.CreciSP.Test.csproj", "{EC67D07F-7E87-49D2-8B0B-4D321E2FF5D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_06.CreciSP.Test", "CreciSP.Test\_06.CreciSP.Test.csproj", "{EC67D07F-7E87-49D2-8B0B-4D321E2FF5D9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.CreciSP.CrossCutting", "CreciSP.CrossCutting\05.CreciSP.CrossCutting.csproj", "{931C627B-890F-452C-898A-26976FAC8591}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_05.CreciSP.CrossCutting", "CreciSP.CrossCutting\_05.CreciSP.CrossCutting.csproj", "{931C627B-890F-452C-898A-26976FAC8591}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.CreciSP.Application", "CreciSP.Application\02.CreciSP.Application.csproj", "{86632E81-7DC9-425E-95B7-2F89EF561E2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_02.CreciSP.Application", "CreciSP.Application\_02.CreciSP.Application.csproj", "{86632E81-7DC9-425E-95B7-2F89EF561E2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
