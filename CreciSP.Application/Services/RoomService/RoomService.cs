@@ -1,7 +1,4 @@
-﻿
-
-
-using CreciSP.Domain.Models;
+﻿using CreciSP.Domain.Models;
 using CreciSP.Domain.Services.RoomRepository;
 using CreciSP.Repository.Repositories;
 using System;
@@ -19,6 +16,12 @@ namespace CreciSP.Application.Services.RoomService
         {
             _readConnection = readConnection;
             _roomRepository = roomRepository;
+        }
+
+        public async Task<bool> Create(Room room)
+        {
+            _roomRepository.Add(room);
+            return await _roomRepository.SaveChangesAsync();
         }
 
         public async Task<ICollection<Room>> GetRooms()

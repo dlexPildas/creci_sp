@@ -7,5 +7,7 @@ namespace CreciSP.Application.Services.RoomService
     public interface IRoomService
     {
         Task<ICollection<Room>> GetRooms();
+
+        Task<bool> Create(Room room);
     }
 }

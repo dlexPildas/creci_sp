@@ -24,6 +24,8 @@ namespace CreciSP.Repository.Mapping
             builder.Property(x => x.Type)
                    .IsRequired();
 
+            builder.Property(x => x.Status)
+                   .IsRequired();
 
             builder.HasMany(x => x.Bookings)
                    .WithOne(x => x.Room)

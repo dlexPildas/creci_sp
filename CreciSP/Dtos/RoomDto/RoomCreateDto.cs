@@ -1,6 +1,6 @@
 ﻿using CreciSP.Domain.Enum;
 
-namespace CreciSP.Mvc.Dtos.UserDto
+namespace CreciSP.Mvc.Dtos.RoomDto
 {
     public class RoomCreateDto
     {

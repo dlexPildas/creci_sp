@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CreciSP.Mvc.Dtos.UserDto
+namespace CreciSP.Mvc.Dtos.BookingDto
 {
     public class BookingCreateDto
     {
