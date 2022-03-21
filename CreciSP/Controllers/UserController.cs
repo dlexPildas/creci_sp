@@ -1,10 +1,12 @@
-﻿using AutoMapper;
+﻿using _01.CreciSP.Mvc.Extensions;
+using AutoMapper;
 using CreciSP.Application.Services.RoomService;
 using CreciSP.Application.Services.UserService;
 using CreciSP.Domain.Enum;
 using CreciSP.Domain.Filters;
 using CreciSP.Domain.Models;
 using CreciSP.Mvc.Dtos.UserDto;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -17,11 +19,13 @@ namespace CreciSP.Mvc.Controllers
     {
         private readonly IUserService _userService;
         private readonly IMapper _mapper;
+        private readonly IValidatorFactory _validatorFactory;
 
-        public UserController(IUserService userService, IMapper mapper)
+        public UserController(IUserService userService, IMapper mapper, IValidatorFactory validatorFactory)
         {
             _userService = userService;
             _mapper = mapper;
+            _validatorFactory = validatorFactory;
         }
 
         /// <summary>
@@ -33,6 +37,11 @@ namespace CreciSP.Mvc.Controllers
         public async Task<IActionResult> Create(UserCreateDto userDto)
         {
             var user = _mapper.Map<User>(userDto);
+
+            ModelState.AddValidationResult(await _validatorFactory.GetValidator<User>().ValidateAsync(user));
+            if (!ModelState.IsValid)
+                return Conflict(ModelState.GetValidationProblemDetails());
+
             var result = await _userService.Create(user);
 
             return Ok(result);
@@ -92,24 +101,41 @@ namespace CreciSP.Mvc.Controllers
         /// Atualizar informações do Usuário
         /// </summary>
         /// <param name="userDto"></param>
-        /// <returns>True se operação for realizada com Sucesso</returns>
+        /// <returns>Retorna sucesso se o usuário for atualizado</returns>
         [HttpPut]
-        public async Task<bool> UpdateUser(UserUpdateDto userDto)
+        public async Task<IActionResult> UpdateUser(UserUpdateDto userDto)
         {
             var user = _mapper.Map<User>(userDto);
-            return await _userService.UpdateUser(user);
+
+            ModelState.AddValidationResult(await _validatorFactory.GetValidator<User>().ValidateAsync(user));
+            if (!ModelState.IsValid)
+                return Conflict(ModelState.GetValidationProblemDetails());
+
+            await _userService.UpdateUser(user);
+
+            ModelState.AddValidationResult(_userService.ValidationResult());
+            if (!ModelState.IsValid)
+                return Conflict(ModelState.GetValidationProblemDetails());
+
+            return Ok();
         }
 
         /// <summary>
         /// Mudar Senha do usuário
         /// </summary>
         /// <param name="userDto"></param>
-        /// <returns>True se operação for realizada com Sucesso</returns>
+        /// <returns>Retorna sucesso se a senha do usuário for trocada</returns>
         [HttpPut]
         [Route("change-password")]
-        public async Task<bool> ChangePasswordUser(UserChangePasswordDto userDto)
+        public async Task<IActionResult> ChangePasswordUser(UserChangePasswordDto userDto)
         {
-            return await _userService.ChangePasswordUser(userDto.Id, userDto.Password, userDto.NewPassword);
+            await _userService.ChangePasswordUser(userDto.Id, userDto.Password, userDto.NewPassword);
+
+            ModelState.AddValidationResult(_userService.ValidationResult());
+            if (!ModelState.IsValid)
+                return Conflict(ModelState.GetValidationProblemDetails());
+
+            return Ok();
         }
 
 
