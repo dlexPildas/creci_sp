@@ -1,7 +1,5 @@
-﻿
-
-
-using _03.CreciSP.Domain.Notifier;
+﻿using _03.CreciSP.Domain.Notifier;
+using CreciSP.Domain.Filters;
 using CreciSP.Domain.Models;
 using CreciSP.Domain.Services.RoomRepository;
 using CreciSP.Repository.Repositories;
@@ -28,25 +26,81 @@ namespace CreciSP.Application.Services.RoomService
             return GetValidationResult();
         }
 
+        /// <summary>
+        /// Cria uma Sala
+        /// </summary>
+        /// <param name="userDto"></param>
+        /// <returns>True se operação for realizada com Sucesso</returns>
         public async Task<bool> Create(Room room)
         {
             _roomRepository.Add(room);
             return await _roomRepository.SaveChangesAsync();
         }
 
-        public async Task<ICollection<Room>> GetRooms()
+       
+        /// <summary>
+        /// Desativer Usuário
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>True se operação for realizada com Sucesso</returns>
+        public async Task<bool> InactiveRoom(Guid id)
         {
-            var cmd = "SELECT * FROM Room";
-
-            try
+            var room = await _roomRepository.GetRoomById(id);
+            if (room == null)
             {
-                var result = await _readConnection.QueryAsync<Room>(cmd);
-                return result;
+                AddValidationFailure("Sala não encontrada!");
+                return false;
             }
-            catch (Exception e)
-            {
-                throw new Exception("Erro ao Buscar os dados");
-            }            
+
+            room.InactiveRoom();
+            return await _roomRepository.SaveChangesAsync();
         }
+
+        /// <summary>
+        /// Active Usuário
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>True se operação for realizada com Sucesso</returns>
+        public async Task<bool> ActiveRoom(Guid id)
+        {
+            var room = await _roomRepository.GetRoomById(id);
+            if (room == null)
+            {
+                AddValidationFailure("Sala não encontrada!");
+                return false;
+            }
+
+            room.ActiveRoom();
+            return await _roomRepository.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Buscar Salas pelos filtros
+        /// </summary>
+        /// <param name="roomFilter"></param>
+        /// <returns>Coleção de Salas</returns>
+        public async Task<ICollection<Room>> GetRoomsByFilter(RoomFilter roomFilter)
+        {
+            return await _roomRepository.GetRoomsByFilters(roomFilter);
+        }
+
+        /// <summary>
+        /// Deletar Sala
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Sucesso se operação for realizada com Sucesso</returns>
+        public async Task<bool> DeleteRoom(Guid id)
+        {
+            var room = await _roomRepository.GetRoomById(id);
+            if (room == null)
+            {
+                AddValidationFailure("Sala não encontrada!");
+                return false;
+            }
+            _roomRepository.Delete(room);
+
+            return await _roomRepository.SaveChangesAsync();
+        }
+
     }
 }
