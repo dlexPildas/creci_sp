@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CreciSP.Application\_02.CreciSP.Application.csproj" />
     <ProjectReference Include="..\CreciSP.Domain\_03.CreciSP.Domain.csproj" />
     <ProjectReference Include="..\CreciSP.Repository\_04.CreciSP.Repository.csproj" />
   </ItemGroup>

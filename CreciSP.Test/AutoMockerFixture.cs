@@ -18,23 +18,26 @@ namespace _06.CreciSP.Test
         public User user;
         public User userInactive;
 
+        public Guid idGuid = Guid.NewGuid();
+
         public AutoMockerFixture()
         {
             InitializeObjects();
+            SetMocks();
         }
 
         private void InitializeObjects()
         {
             mocker = new AutoMocker();
 
-            user = new User(new Guid(), "Teste", "01234567890", "teste@teste.com", UserTypeEnum.Common, true, "0123456789");
+            user = new User(idGuid, "Teste", "01234567890", "teste@teste.com", UserTypeEnum.Common, true, "0123456789");
             userInactive = new User(new Guid(), "Teste", "01234567890", "teste@teste.com", UserTypeEnum.Common, false, "0123456789");
         }
 
         private void SetMocks()
         {
-            //mocker.GetMock<IUserRepository>().Setup(x => x)
-            //    .Returns(new List<User>() { user }.AsQueryable());
+            mocker.GetMock<IUserRepository>().Setup(x => x.GetUserById(idGuid).Result)
+                .Returns(user);
         }
     }
 }
