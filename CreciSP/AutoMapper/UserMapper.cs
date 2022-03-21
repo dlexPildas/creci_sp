@@ -9,8 +9,6 @@ namespace CreciSP.Mvc.AutoMapper
         public UserMapper()
         {
             CreateMap<UserCreateDto, Booking>();
-            CreateMap<RoomCreateDto, Room>();
-            CreateMap<BookingCreateDto, Booking>();
         }
     }
 }

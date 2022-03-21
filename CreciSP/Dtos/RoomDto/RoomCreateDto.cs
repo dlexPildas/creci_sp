@@ -4,9 +4,9 @@ namespace CreciSP.Mvc.Dtos.UserDto
 {
     public class RoomCreateDto
     {
-        public int Number { get; private set; }
-        public int Floor { get; private set; }
-        public int Capacity { get; private set; }
-        public RoomTypeEnum Type { get; private set; }
+        public int Number { get; set; }
+        public int Floor { get; set; }
+        public int Capacity { get; set; }
+        public RoomTypeEnum Type { get; set; }
     }
 }

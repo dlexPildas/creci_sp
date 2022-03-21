@@ -1,4 +1,5 @@
 ﻿using CreciSP.Domain.Enum;
+using CreciSP.Domain.Filters;
 using CreciSP.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,14 @@ namespace CreciSP.Application.Services.UserService
     {
         Task<bool> Create(User user);
 
-        Task<ICollection<User>> GetUsersByFilters(string nome, string email, UserTypeEnum type);
+        Task<ICollection<User>> GetUsersByFilters(UserFilter userfilter);
+
+        Task<User> GetUserById(Guid id);
+
+        Task<bool> InactiveUser(Guid id);
+
+        Task<bool> ActiveUser(Guid id);
+
+        Task<bool> UpdateUser(User user);
     }
 }

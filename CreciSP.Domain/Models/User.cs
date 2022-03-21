@@ -22,5 +22,27 @@ namespace CreciSP.Domain.Models
         public bool Status { get;  private set; }
         public string Password { get;  private set; }
         public virtual ICollection<Booking> Bookings { get;  private set; }
+
+
+        public void ChangePassword(string newPassord)
+        {
+            Password = newPassord;
+        }
+
+        public void UpdateUser(User user)
+        {            
+            Name = user.Name;
+            Email = user.Email;
+        }
+
+        public void ActiveUser()
+        {
+            Status = true;
+        }
+
+        public void InactiveUser()
+        {
+            Status = false;
+        }
     }
 }

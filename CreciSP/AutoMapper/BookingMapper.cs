@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using CreciSP.Domain.Models;
+using CreciSP.Mvc.Dtos.UserDto;
 
 namespace CreciSP.Mvc.AutoMapper
 {
@@ -6,7 +8,7 @@ namespace CreciSP.Mvc.AutoMapper
     {
         public BookingMapper()
         {
-
+            CreateMap<BookingCreateDto, Booking>();
         }
     }
 }
