@@ -11,7 +11,7 @@ namespace CreciSP.Domain.Services.BookingRepository
 {
     public interface IBookingRepository : IPersist
     {
-        Task<ICollection<Booking>> GetBookingByFilters(BookingFilter filter);
+        Task<ICollection<Booking>> GetBookingsByFilter(BookingFilter filter);
 
         Task<Booking> GetBookingById(Guid id);
     }

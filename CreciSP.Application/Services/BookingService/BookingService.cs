@@ -51,7 +51,7 @@ namespace CreciSP.Application.Services.BookingService
         /// <returns>Coleção de Reservas</returns>
         public async Task<ICollection<Booking>> GetBookingsByFilter(BookingFilter bookingFilter)
         {
-            return await _bookingRepository.GetBookingByFilters(bookingFilter);
+            return await _bookingRepository.GetBookingsByFilter(bookingFilter);
         }
 
         /// <summary>
