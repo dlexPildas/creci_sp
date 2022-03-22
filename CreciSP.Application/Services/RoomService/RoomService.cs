@@ -103,7 +103,7 @@ namespace CreciSP.Application.Services.RoomService
             }
 
             var bookingFilter = new BookingFilter { RoomId = room.Id };
-            var bookings = _bookingRepository.GetBookingByFilters(bookingFilter).Result;
+            var bookings = _bookingRepository.GetBookingsByFilter(bookingFilter).Result;
 
             if (bookings.Any())
             {
