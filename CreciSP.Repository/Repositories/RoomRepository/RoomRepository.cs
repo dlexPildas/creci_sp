@@ -44,10 +44,10 @@ namespace CreciSP.Domain.Services.RoomRepository
                                ,[Status]
                            FROM [dbo].[Room] r
                            WHERE (@Number is null OR r.[Number] = @Number ) AND
-                           (@Floor is null OR r.[Floor] = @Number ) AND
-                           (@Capacity is null OR r.[Capacity] = @Number ) AND
-                           (@Type is null OR r.[Type] = @Number ) AND
-                           (@Status is null OR r.[Type] = @Number )";
+                           (@Floor is null OR r.[Floor] = @Floor ) AND
+                           (@Capacity is null OR r.[Capacity] = @Capacity ) AND
+                           (@Type is null OR r.[Type] = @Type ) AND
+                           (@Status is null OR r.[Type] = @Status )";
 
             var parameters = new
             {
