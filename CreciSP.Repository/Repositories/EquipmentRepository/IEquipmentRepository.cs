@@ -8,12 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CreciSP.Domain.Services.UserRepository
+namespace CreciSP.Domain.Services.EquipmentRepository
 {
-    public interface IUserRepository : IPersist
+    public interface IEquipmentRepository : IPersist
     {
-        Task<ICollection<User>> GetUsersByFilters(UserFilter userFilter);
+        Task<ICollection<Equipment>> GetEquipmentsByFilters(EquipmentFilter equipmentFilter);
 
-        Task<User> GetUserById(Guid id);
+        Task<Equipment> GetEquipmentById(Guid id);
+
     }
 }

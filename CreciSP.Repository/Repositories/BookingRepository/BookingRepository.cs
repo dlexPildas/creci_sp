@@ -22,7 +22,7 @@ namespace CreciSP.Domain.Services.BookingRepository
             _readConnection = readConnection;
         }
 
-        public async Task<ICollection<Booking>> GetRoomsByFilters(BookingFilter filter)
+        public async Task<ICollection<Booking>> GetBookingByFilters(BookingFilter filter)
         {
             var cmd = $@"SELECT [Id]
                                ,[Date]

@@ -49,7 +49,7 @@ namespace CreciSP.Mvc.Controllers
         /// <summary>
         /// Buscar Reservas pelos filtros
         /// </summary>
-        /// <param name="roomFilter"></param>
+        /// <param name="bookingFilter"></param>
         /// <returns>Coleção de Reservas</returns>
         [HttpGet]
         public async Task<IActionResult> GetBookingsByFilter(BookingFilter roomFilter)

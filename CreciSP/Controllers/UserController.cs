@@ -5,6 +5,7 @@ using CreciSP.Application.Services.UserService;
 using CreciSP.Domain.Enum;
 using CreciSP.Domain.Filters;
 using CreciSP.Domain.Models;
+using CreciSP.Mvc.Dtos.EquipmentDto;
 using CreciSP.Mvc.Dtos.UserDto;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
@@ -34,7 +35,7 @@ namespace CreciSP.Mvc.Controllers
         /// <param name="user"></param>
         /// <returns>True se operação for realizada com Sucesso</returns>
         [HttpPost]
-        public async Task<IActionResult> Create(UserCreateDto userDto)
+        public async Task<IActionResult> Create(EquipmentCreateDto userDto)
         {
             var user = _mapper.Map<User>(userDto);
 

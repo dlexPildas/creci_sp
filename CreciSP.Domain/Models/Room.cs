@@ -22,6 +22,7 @@ namespace CreciSP.Domain.Models
         public bool Status { get;  private set; }
 
         public virtual ICollection<Booking> Bookings { get;  private set; }
+        public virtual ICollection<Equipment> Equipments { get;  private set; }
 
         public void ActiveRoom()
         {

@@ -23,7 +23,7 @@ namespace CreciSP.Domain.Services.UserRepository
             _readConnection = readConnection;
         }
 
-        public async Task<ICollection<User>> GetUsersByFilters(UserFilter filter)
+        public async Task<ICollection<User>> GetUsersByFilters(UserFilter userFilter)
         {
             var cmd = $@"SELECT [Id]
                                ,[Name]
@@ -39,11 +39,11 @@ namespace CreciSP.Domain.Services.UserRepository
                            (@Status is null OR u.[Status] = @Status)";
             var parameters = new
             {
-                Name = filter.Name,
-                Cpf = filter.Cpf,
-                Email = filter.Email,
-                Type = filter.Type,
-                Status = filter.Status
+                Name = userFilter.Name,
+                Cpf = userFilter.Cpf,
+                Email = userFilter.Email,
+                Type = userFilter.Type,
+                Status = userFilter.Status
             };
             var result = await _readConnection.QueryAsync<User>(cmd, parameters);
             return result;

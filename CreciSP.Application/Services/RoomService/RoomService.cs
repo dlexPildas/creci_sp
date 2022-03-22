@@ -1,10 +1,12 @@
 ﻿using _03.CreciSP.Domain.Notifier;
 using CreciSP.Domain.Filters;
 using CreciSP.Domain.Models;
+using CreciSP.Domain.Services.BookingRepository;
 using CreciSP.Domain.Services.RoomRepository;
 using CreciSP.Repository.Repositories;
 using FluentValidation.Results;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -14,11 +16,13 @@ namespace CreciSP.Application.Services.RoomService
     {
         private readonly IReadConnection _readConnection;
         private readonly IRoomRepository _roomRepository;
+        private readonly IBookingRepository _bookingRepository;
 
-        public RoomService(IReadConnection readConnection, IRoomRepository roomRepository)
+        public RoomService(IReadConnection readConnection, IRoomRepository roomRepository, IBookingRepository bookingRepository)
         {
             _readConnection = readConnection;
             _roomRepository = roomRepository;
+            _bookingRepository = bookingRepository;
         }
 
         public override ValidationResult ValidationResult()
@@ -97,6 +101,16 @@ namespace CreciSP.Application.Services.RoomService
                 AddValidationFailure("Sala não encontrada!");
                 return false;
             }
+
+            var bookingFilter = new BookingFilter { RoomId = room.Id };
+            var bookings = _bookingRepository.GetBookingByFilters(bookingFilter).Result;
+
+            if (bookings.Any())
+            {
+                AddValidationFailure("Essa Sala possui Reservas!");
+                return false;
+            }
+
             _roomRepository.Delete(room);
 
             return await _roomRepository.SaveChangesAsync();
