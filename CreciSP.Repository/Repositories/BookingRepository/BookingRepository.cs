@@ -35,7 +35,14 @@ namespace CreciSP.Domain.Services.BookingRepository
                            (@RoomId is null OR r.[RoomId] = @RoomId) AND
                            (@UserId is null OR r.[UserId] = @UserId)";
 
-            var result = await _readConnection.QueryAsync<Booking>(cmd);
+            var parameters = new
+            {
+                Date = filter.Date,
+                RoomId = filter.RoomId,
+                UserId = filter.UserId
+            };
+
+            var result = await _readConnection.QueryAsync<Booking>(cmd, parameters);
             return result;
         }
 
