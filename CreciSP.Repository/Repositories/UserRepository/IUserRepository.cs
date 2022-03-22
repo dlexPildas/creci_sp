@@ -12,7 +12,7 @@ namespace CreciSP.Domain.Services.UserRepository
 {
     public interface IUserRepository : IPersist
     {
-        Task<ICollection<User>> GetUsersByFilters(UserFilter userfilter);
+        Task<ICollection<User>> GetUsersByFilters(UserFilter filter);
 
         Task<User> GetUserById(Guid id);
     }

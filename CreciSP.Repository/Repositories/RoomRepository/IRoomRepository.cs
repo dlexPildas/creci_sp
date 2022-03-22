@@ -15,6 +15,6 @@ namespace CreciSP.Domain.Services.RoomRepository
 
         Task<Room> GetRoomById(Guid id);
 
-        Task<ICollection<Room>> GetRoomsByFilters(RoomFilter roomFilter);
+        Task<ICollection<Room>> GetRoomsByFilters(RoomFilter filter);
     }
 }

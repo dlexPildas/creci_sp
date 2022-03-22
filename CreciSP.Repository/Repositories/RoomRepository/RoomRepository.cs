@@ -34,7 +34,7 @@ namespace CreciSP.Domain.Services.RoomRepository
             return _dataContext.Rooms.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<ICollection<Room>> GetRoomsByFilters(RoomFilter roomFilter)
+        public async Task<ICollection<Room>> GetRoomsByFilters(RoomFilter filter)
         {
             var cmd = $@"SELECT [Id]
                                ,[Number]
@@ -43,13 +43,22 @@ namespace CreciSP.Domain.Services.RoomRepository
                                ,[Type]
                                ,[Status]
                            FROM [dbo].[Room] r
-                           ({roomFilter.Number} is null OR r.[Number] = {roomFilter.Number}) AND
-                           ({roomFilter.Floor} is null OR r.[Floor] = {roomFilter.Floor}) AND
-                           ({roomFilter.Capacity} is null OR r.[Capacity] = {roomFilter.Capacity}) AND
-                           ({roomFilter.Type} is null OR r.[Type] = {roomFilter.Type}) AND
-                           ({roomFilter.Status} is null OR r.[Type] = {roomFilter.Status})";
+                           WHERE (@Number is null OR r.[Number] = @Number ) AND
+                           (@Floor is null OR r.[Floor] = @Number ) AND
+                           (@Capacity is null OR r.[Capacity] = @Number ) AND
+                           (@Type is null OR r.[Type] = @Number ) AND
+                           (@Status is null OR r.[Type] = @Number )";
 
-            var result = await _readConnection.QueryAsync<Room>(cmd);
+            var parameters = new
+            {
+                Number = filter.Number,
+                Floor = filter.Floor,
+                Capacity = filter.Capacity,
+                Type = filter.Type,
+                Status = filter.Status
+            };
+
+            var result = await _readConnection.QueryAsync<Room>(cmd, parameters);
             return result;
         }
     }

@@ -22,7 +22,7 @@ namespace CreciSP.Domain.Services.BookingRepository
             _readConnection = readConnection;
         }
 
-        public async Task<ICollection<Booking>> GetRoomsByFilters(BookingFilter bookingFilter)
+        public async Task<ICollection<Booking>> GetRoomsByFilters(BookingFilter filter)
         {
             var cmd = $@"SELECT [Id]
                                ,[Date]
@@ -31,11 +31,9 @@ namespace CreciSP.Domain.Services.BookingRepository
                                ,[RoomId]
                                ,[UserId]
                            FROM [dbo].[Booking] b
-                           ({bookingFilter.Date} is null OR r.[Date] = '{bookingFilter.Date.ToString("yyyy-MM-dd")}') AND
-                           ({bookingFilter.StartTime} is null OR r.[StartTime] = {bookingFilter.StartTime}) AND
-                           ({bookingFilter.EndTime} is null OR r.[EndTime] = {bookingFilter.EndTime}) AND
-                           ({bookingFilter.RoomId} is null OR r.[RoomId] = {bookingFilter.RoomId}) AND
-                           ({bookingFilter.UserId} is null OR r.[UserId] = {bookingFilter.UserId})";
+                           WHERE (@Date is null OR r.[Date] = '@Date') AND
+                           (@RoomId is null OR r.[RoomId] = @RoomId) AND
+                           (@UserId is null OR r.[UserId] = @UserId)";
 
             var result = await _readConnection.QueryAsync<Booking>(cmd);
             return result;
