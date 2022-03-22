@@ -1,0 +1,93 @@
+<header class="header mb-1">
+  <mat-icon>person</mat-icon>
+  <h1>Usuários</h1>
+</header>
+
+<div class="row">
+  <div class="col-sm-12 col-md-6">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input [(ngModel)]="filters.name" matInput placeholder="Placeholder">
+    </mat-form-field>
+  </div>
+
+  <div class="col-sm-12 col-md-6">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input [(ngModel)]="filters.email" matInput placeholder="Placeholder">
+    </mat-form-field>
+  </div>
+
+  <div class="col-sm-12 col-md-4">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>CPF</mat-label>
+      <input [(ngModel)]="filters.cpf" matInput placeholder="Placeholder">
+    </mat-form-field>
+  </div>
+
+  <div class="col-sm-12 col-md-4">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Tipo de Usuário</mat-label>
+      <input [(ngModel)]="filters.type" matInput placeholder="Placeholder">
+    </mat-form-field>
+  </div>
+
+  <div class="col-sm-12 col-md-4">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Status do Usuário</mat-label>
+      <input [(ngModel)]="filters.status" matInput placeholder="Placeholder">
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-sm-12 col-md-12 text-align-end">
+    <button (click)="getUsers()" mat-raised-button color="primary">Buscar</button>
+  </div>
+</div>
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mb-3">
+
+  <!-- Nome Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Nome </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- CPF Column -->
+  <ng-container matColumnDef="cpf">
+    <th mat-header-cell *matHeaderCellDef> CPF </th>
+    <td mat-cell *matCellDef="let element"> {{element.cpf}} </td>
+  </ng-container>
+
+  <!-- Email Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <!-- Status Column -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element"> {{element.status ? 'Ativo' : 'Inativo'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>  </th>
+    <td class="text-align" mat-cell *matCellDef="let element">
+      <button *ngIf="!element.status" (click)="activeUser(element.id)" class="active-button mr-1" mat-mini-fab aria-label="Example icon button with a home icon">
+        <mat-icon>done</mat-icon>
+      </button>
+
+      <button *ngIf="element.status" (click)="inactiveUser(element.id)" class="inactive-button" mat-mini-fab aria-label="Example icon button with a home icon">
+        <mat-icon>close</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+

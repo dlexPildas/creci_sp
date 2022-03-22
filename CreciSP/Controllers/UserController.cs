@@ -55,7 +55,7 @@ namespace CreciSP.Mvc.Controllers
         /// <param name="type"></param>
         /// <returns>Coleção de Usuários</returns>
         [HttpGet]
-        public async Task<IActionResult> GetUsersByFilters([FromQuery]UserFilter userfilter)
+        public async Task<IActionResult> GetUsersByFilters([FromQuery] UserFilter userfilter)
         {
             var result = await _userService.GetUsersByFilters(userfilter);
             return Ok(result);

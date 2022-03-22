@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentValidation;
+﻿using FluentValidation;
 using CreciSP.Domain.Models;
 
 namespace CreciSP.Domain.Validators
 {
-    public class RoomValidator :AbstractValidator<Room>
+    public class RoomValidator : AbstractValidator<Room>
     {
         public RoomValidator()
         {
