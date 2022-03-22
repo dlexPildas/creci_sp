@@ -30,8 +30,8 @@ namespace _06.CreciSP.Test
         {
             mocker = new AutoMocker();
 
-            user = new User(idGuid, "Teste", "01234567890", "teste@teste.com", UserTypeEnum.Common, true, "0123456789");
-            userInactive = new User(new Guid(), "Teste", "01234567890", "teste@teste.com", UserTypeEnum.Common, false, "0123456789");
+            user = new User(idGuid, "Teste", "01234567890", "teste@teste.com", UserType.Common, true, "0123456789");
+            userInactive = new User(new Guid(), "Teste", "01234567890", "teste@teste.com", UserType.Common, false, "0123456789");
         }
 
         private void SetMocks()

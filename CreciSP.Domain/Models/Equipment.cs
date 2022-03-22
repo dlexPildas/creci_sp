@@ -12,7 +12,7 @@ namespace CreciSP.Domain.Models
 
         public Guid Id { get;  private set; }
         public int Number { get;  private set; }
-        public EquipmentTypeEnum Type { get;  private set; }
+        public EquipmentType Type { get;  private set; }
         public string Description { get;  private set; }        
         public Guid? RoomId { get;  private set; }
         public virtual Room Room { get;  private set; }

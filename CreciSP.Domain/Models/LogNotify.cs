@@ -12,7 +12,7 @@ namespace CreciSP.Domain.Models
         public int Id { get; set; }
 
         public string Message { get; private set; }
-        public LogTypeEnum Type { get; private set; } = LogTypeEnum.RemoveBooking;
+        public LogType Type { get; private set; } = LogType.RemoveBooking;
         public DateTime ActionDate { get; private set; }
         public bool IsViewed { get; private set; } = false;
 
@@ -21,7 +21,7 @@ namespace CreciSP.Domain.Models
         public virtual User ToUser { get; private set; }
 
 
-        public LogNotify(string message, LogTypeEnum type, DateTime actionDate, bool isViewed, Guid toUserId)
+        public LogNotify(string message, LogType type, DateTime actionDate, bool isViewed, Guid toUserId)
         {
             Message = message;
             Type = type;

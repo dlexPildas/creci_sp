@@ -16,7 +16,7 @@ namespace CreciSP.Domain.Filters
         public int Number { get; private set; }
         public int Floor { get; private set; }
         public int Capacity { get; private set; }
-        public RoomTypeEnum Type { get; private set; }
+        public RoomType Type { get; private set; }
         public bool? Status { get; private set; }
     }
 }

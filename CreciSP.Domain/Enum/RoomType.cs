@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CreciSP.Domain.Enum
 {
-    public enum UserTypeEnum : int
+    public enum RoomType : int
     {
-        Administrator = 1,
+        Meeting = 1,
         Common = 2
     }
 }

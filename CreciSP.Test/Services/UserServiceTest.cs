@@ -37,7 +37,7 @@ namespace _06.CreciSP.Test.Services
             AutoMockerFixture autoMockerFixture = new AutoMockerFixture();
             var userService = autoMockerFixture.mocker.CreateInstance<UserService>();
             var user = autoMockerFixture.user;
-            var newUser = new User(autoMockerFixture.idGuid, "NameAtualizado", "01234567890", "email@atualizado.com", UserTypeEnum.Common, true, "0123456789");
+            var newUser = new User(autoMockerFixture.idGuid, "NameAtualizado", "01234567890", "email@atualizado.com", UserType.Common, true, "0123456789");
 
             // Act
             await userService.UpdateUser(newUser);
@@ -55,7 +55,7 @@ namespace _06.CreciSP.Test.Services
             AutoMockerFixture autoMockerFixture = new AutoMockerFixture();
             var userService = autoMockerFixture.mocker.CreateInstance<UserService>();
             var user = autoMockerFixture.user;
-            var newUser = new User(Guid.NewGuid(), "NameAtualizado", "01234567890", "email@atualizado.com", UserTypeEnum.Common, true, "0123456789");
+            var newUser = new User(Guid.NewGuid(), "NameAtualizado", "01234567890", "email@atualizado.com", UserType.Common, true, "0123456789");
 
             // Act
             await userService.UpdateUser(newUser);
