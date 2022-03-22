@@ -8,6 +8,8 @@ using CreciSP.Repository.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using _03.CreciSP.Domain.Notifier;
+using CreciSP.Application.Services.LogNotifyService;
+using CreciSP.Domain.Services.LogNotifyRepository;
 
 namespace CreciSP.CrossCutting
 {
@@ -19,6 +21,7 @@ namespace CreciSP.CrossCutting
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRoomService, RoomService>();
             services.AddScoped<IBookingService, BookingService>();
+            services.AddScoped<ILogNotifyService, LogNotifyService>();
             #endregion
 
             #region Repositories
@@ -26,6 +29,7 @@ namespace CreciSP.CrossCutting
             services.AddScoped<IReadConnection, ReadConnection>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRoomRepository, RoomRepository>();
+            services.AddScoped<ILogNotifyRepository, LogNotifyRepository>();
             services.AddScoped<IBookingRepository, BookingRepository>();
             #endregion
 
