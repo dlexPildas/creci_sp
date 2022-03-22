@@ -68,9 +68,9 @@ namespace CreciSP.Mvc.Controllers
         /// <returns>Sucesso se operação for realizada com Sucesso</returns>
         [HttpDelete]
         [Route("{id}")]
-        public async Task<IActionResult> DeleteBooking(Guid id)
+        public async Task<IActionResult> DeleteBooking(Guid id, bool isAdministrator)
         {
-            await _bookingService.DeleteBooking(id);
+            await _bookingService.DeleteBooking(id, isAdministrator);
 
             ModelState.AddValidationResult(_bookingService.ValidationResult());
             if (!ModelState.IsValid)

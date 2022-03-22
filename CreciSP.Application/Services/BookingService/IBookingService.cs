@@ -15,7 +15,7 @@ namespace CreciSP.Application.Services.BookingService
 
         Task<ICollection<Booking>> GetBookingsByFilter(BookingFilter roomFilter);
 
-        Task<bool> DeleteBooking(Guid id);
+        Task<bool> DeleteBooking(Guid id, bool isAdmintrator);
 
     }
 }

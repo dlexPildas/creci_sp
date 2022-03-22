@@ -37,7 +37,12 @@ namespace CreciSP.Application.Services.LogNotifyService
         /// <returns>Lsta de Log Notify</returns>
         public async Task<ICollection<LogNotify>> GetLogNotifyByUserId(Guid userId)
         {
-           return await _logNotifyRepository.GetLogNotifyByUserId(userId);
+            if (userId == Guid.Empty)
+            {
+                AddValidationFailure("Informe o usuário corretamente!");
+                return null;
+            }
+            return await _logNotifyRepository.GetLogNotifyByUserId(userId);
         }
 
         

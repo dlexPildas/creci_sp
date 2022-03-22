@@ -1,7 +1,9 @@
 ﻿using _03.CreciSP.Domain.Notifier;
+using CreciSP.Domain.Enum;
 using CreciSP.Domain.Filters;
 using CreciSP.Domain.Models;
 using CreciSP.Domain.Services.BookingRepository;
+using CreciSP.Domain.Services.LogNotifyRepository;
 using CreciSP.Domain.Services.RoomRepository;
 using CreciSP.Repository.Repositories;
 using FluentValidation.Results;
@@ -17,11 +19,13 @@ namespace CreciSP.Application.Services.BookingService
     {
         private readonly IReadConnection _readConnection;
         private readonly IBookingRepository _bookingRepository;
+        private readonly ILogNotifyRepository _logNotifyRepository;
 
-        public BookingService(IReadConnection readConnection, IBookingRepository bookingRepository)
+        public BookingService(IReadConnection readConnection, IBookingRepository bookingRepository, ILogNotifyRepository logNotifyRepository)
         {
             _readConnection = readConnection;
             _bookingRepository = bookingRepository;
+            _logNotifyRepository = logNotifyRepository;
         }
 
         public override ValidationResult ValidationResult()
@@ -56,15 +60,31 @@ namespace CreciSP.Application.Services.BookingService
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Sucesso se operação for realizada com Sucesso</returns>
-        public async Task<bool> DeleteBooking(Guid id)
+        public async Task<bool> DeleteBooking(Guid id, bool isAdmintrator)
         {
-            var room = await _bookingRepository.GetBookingById(id);
-            if (room == null)
+            var booking = await _bookingRepository.GetBookingById(id);
+            if (booking == null)
             {
                 AddValidationFailure("Reserva não encontrada!");
                 return false;
             }
-            _bookingRepository.Delete(room);
+
+            if (isAdmintrator)
+            {
+                _logNotifyRepository.Add(new LogNotify 
+                {
+                    ActionDate = DateTime.Now,
+                    IsViewed = false,
+                    ToUserId = booking.UserId,
+                    Type = LogTypeEnum.RemoveBooking,
+                    Message = $"Reserva Sala {booking.Room.Number} no dia {booking.Date.ToString("dd/MM/yyyy")} das {booking.StartTime.ToString("hh:mm")} às {booking.EndTime.ToString("hh:mm")}"
+                });
+
+                _logNotifyRepository.SaveChangesAsync();
+            }
+
+
+            _bookingRepository.Delete(booking);
 
             return await _bookingRepository.SaveChangesAsync();
         }
