@@ -13,12 +13,12 @@ using System.Threading.Tasks;
 
 namespace CreciSP.Application.Services.LogNotifyService
 {
-    public class LogNotify : NotifierService, ILogNotifyService
+    public class LogNotifyService : NotifierService, ILogNotifyService
     {
         private readonly IReadConnection _readConnection;
         private readonly ILogNotifyRepository _logNotifyRepository;
 
-        public LogNotify(IReadConnection readConnection, ILogNotifyRepository logNotifyRepository)
+        public LogNotifyService(IReadConnection readConnection, ILogNotifyRepository logNotifyRepository)
         {
             _readConnection = readConnection;
             _logNotifyRepository = logNotifyRepository;
@@ -37,8 +37,7 @@ namespace CreciSP.Application.Services.LogNotifyService
         /// <returns>Lsta de Log Notify</returns>
         public async Task<ICollection<LogNotify>> GetLogNotifyByUserId(Guid userId)
         {
-            var result = await _logNotifyRepository.GetLogNotifyByUserId(userId);
-            return result;
+           return await _logNotifyRepository.GetLogNotifyByUserId(userId);
         }
 
         
