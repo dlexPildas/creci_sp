@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace _03.CreciSP.Domain.Notifier
 {
-    public abstract class NotifierService : INotifierService
+    public class NotifierService : INotifierService
     {
         private readonly ValidationResult _validationResult;
-        public abstract ValidationResult ValidationResult();
-
-        protected NotifierService()
+        
+        public NotifierService()
         {
             _validationResult ??= new ValidationResult();
         }
@@ -25,6 +24,11 @@ namespace _03.CreciSP.Domain.Notifier
         public ValidationResult GetValidationResult()
         {
             return _validationResult;
+        }
+        
+        public virtual ValidationResult ValidationResult()
+        {
+            return null;
         }
     }
 }

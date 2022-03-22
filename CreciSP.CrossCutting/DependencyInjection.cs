@@ -22,13 +22,12 @@ namespace CreciSP.CrossCutting
             #endregion
 
             #region Repositories
-            services.AddScoped<IPersist, Persist>();
+            services.AddScoped<IPersist, Persist>(); 
             services.AddScoped<IReadConnection, ReadConnection>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRoomRepository, RoomRepository>();
             services.AddScoped<IBookingRepository, BookingRepository>();
             #endregion
-
 
             services.AddScoped<INotifierService, NotifierService>();
 
