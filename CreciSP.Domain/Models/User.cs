@@ -18,6 +18,7 @@ namespace CreciSP.Domain.Models
         public bool Status { get;  private set; }
         public string Password { get;  private set; }
         public virtual ICollection<Booking> Bookings { get;  private set; }
+        public virtual ICollection<LogNotify> LogNotifies { get;  private set; }
 
         public User() {}
 
