@@ -48,11 +48,11 @@ namespace CreciSP.Application.Services.BookingService
         /// <summary>
         /// Buscar Reservas pelos filtros
         /// </summary>
-        /// <param name="roomFilter"></param>
+        /// <param name="bookingFilter"></param>
         /// <returns>Coleção de Reservas</returns>
         public async Task<ICollection<Booking>> GetBookingsByFilter(BookingFilter bookingFilter)
         {
-            return await _bookingRepository.GetRoomsByFilters(bookingFilter);
+            return await _bookingRepository.GetBookingsByFilter(bookingFilter);
         }
 
         /// <summary>
@@ -71,14 +71,9 @@ namespace CreciSP.Application.Services.BookingService
 
             if (isAdmintrator)
             {
-                _logNotifyRepository.Add(new LogNotify 
-                {
-                    ActionDate = DateTime.Now,
-                    IsViewed = false,
-                    ToUserId = booking.UserId,
-                    Type = LogTypeEnum.RemoveBooking,
-                    Message = $"Reserva Sala {booking.Room.Number} no dia {booking.Date.ToString("dd/MM/yyyy")} das {booking.StartTime.ToString("hh:mm")} às {booking.EndTime.ToString("hh:mm")}"
-                });
+                var Message = $"Reserva Sala {booking.Room.Number} no dia {booking.Date.ToString("dd/MM/yyyy")} das {booking.StartTime.ToString("hh:mm")} às {booking.EndTime.ToString("hh:mm")}";
+                var logNotify = new LogNotify(Message, LogTypeEnum.RemoveBooking, DateTime.Now, false, booking.UserId);
+                _logNotifyRepository.Add(logNotify);
 
                 _logNotifyRepository.SaveChangesAsync();
             }

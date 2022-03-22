@@ -16,6 +16,7 @@ namespace CreciSP.Repository.Context
         public DbSet<User> Users { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<LogNotify> LogNotify { get; set; }
 
         public IDbConnection Connection => Database.GetDbConnection();
 
