@@ -15,12 +15,10 @@ namespace CreciSP.Application.Services.LogNotifyService
 {
     public class LogNotifyService : NotifierService, ILogNotifyService
     {
-        private readonly IReadConnection _readConnection;
         private readonly ILogNotifyRepository _logNotifyRepository;
 
-        public LogNotifyService(IReadConnection readConnection, ILogNotifyRepository logNotifyRepository)
+        public LogNotifyService(ILogNotifyRepository logNotifyRepository)
         {
-            _readConnection = readConnection;
             _logNotifyRepository = logNotifyRepository;
         }
 

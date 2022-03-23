@@ -15,12 +15,10 @@ namespace CreciSP.Application.Services.EquipmentService
 {
     public class EquipmentService : NotifierService, IEquipmentService
     {
-        private readonly IReadConnection _readConnection;
         private readonly IEquipmentRepository _equipmentRepository;
 
-        public EquipmentService(IReadConnection readConnection, IEquipmentRepository equipmentRepository)
+        public EquipmentService(IEquipmentRepository equipmentRepository)
         {
-            _readConnection = readConnection;
             _equipmentRepository = equipmentRepository;
         }
 

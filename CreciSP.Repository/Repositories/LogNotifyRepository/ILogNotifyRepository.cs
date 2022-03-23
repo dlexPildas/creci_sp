@@ -10,6 +10,6 @@ namespace CreciSP.Domain.Services.LogNotifyRepository
 {
     public interface ILogNotifyRepository : IPersist
     {
-        Task<ICollection<LogNotify>> GetLogNotifyByUserId(Guid userId);
+        Task<ICollection<LogNotify>> GetLogNotifyByUserId(Guid toUserId);
     }
 }

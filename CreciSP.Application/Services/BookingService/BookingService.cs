@@ -16,13 +16,11 @@ namespace CreciSP.Application.Services.BookingService
 {
     public class BookingService : NotifierService, IBookingService
     {
-        private readonly IReadConnection _readConnection;
         private readonly IBookingRepository _bookingRepository;
         private readonly ILogNotifyRepository _logNotifyRepository;
 
-        public BookingService(IReadConnection readConnection, IBookingRepository bookingRepository, ILogNotifyRepository logNotifyRepository)
+        public BookingService(IBookingRepository bookingRepository, ILogNotifyRepository logNotifyRepository)
         {
-            _readConnection = readConnection;
             _bookingRepository = bookingRepository;
             _logNotifyRepository = logNotifyRepository;
         }

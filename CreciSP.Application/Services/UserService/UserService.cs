@@ -15,12 +15,10 @@ namespace CreciSP.Application.Services.UserService
 {
     public class UserService : NotifierService, IUserService
     {
-        private readonly IReadConnection _readConnection;
         private readonly IUserRepository _userRepository;
 
-        public UserService(IReadConnection readConnection, IUserRepository userRepository)
+        public UserService(IUserRepository userRepository)
         {
-            _readConnection = readConnection;
             _userRepository = userRepository;
         }
 
