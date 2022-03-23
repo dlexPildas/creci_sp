@@ -13,7 +13,7 @@ namespace CreciSP.Application.Services.BookingService
     {
         Task<bool> Create(Booking booking);
 
-        Task<ICollection<Booking>> GetBookingsByFilter(BookingFilter roomFilter);
+        Task<ICollection<Booking>> GetBookingsByFilter(BookingFilter bookingFilter);
 
         Task<bool> DeleteBooking(Guid id, bool isAdmintrator);
 

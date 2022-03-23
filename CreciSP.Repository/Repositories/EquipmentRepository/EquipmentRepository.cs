@@ -35,7 +35,7 @@ namespace CreciSP.Domain.Services.EquipmentRepository
                             WHERE 
                                 1=1
                                 {(equipmentFilter.Number != default ? $"AND (e.[Number] = {equipmentFilter.Number})" : "")}
-                                {(equipmentFilter.RoomId != default ? $"AND ( e.[RoomId] = '{equipmentFilter.RoomId}')" : "")}
+                                {(equipmentFilter.RoomId != default ? $"AND ( e.[RoomId] = '{equipmentFilter.RoomId}')" : "AND ( e.[RoomId] IS NULL)")}
                                 {(equipmentFilter.Description != default ? $"AND ( e.[Description] like '%{equipmentFilter.RoomId}%')" : "")}
                                 {(equipmentFilter.Type != default ? $"AND ( e.[Type] = {equipmentFilter.Type})" : "")}";
             

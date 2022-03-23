@@ -22,6 +22,7 @@ namespace CreciSP.Domain.Services.LogNotifyRepository
 
         public async Task<ICollection<LogNotify>> GetLogNotifyByUserId(Guid toUserId)
         {
+
             var cmd = $@" SELECT [Id]
                                 ,[Message]
                                 ,[Type]
@@ -29,14 +30,11 @@ namespace CreciSP.Domain.Services.LogNotifyRepository
                                 ,[IsViewed]
                                 ,[ToUserId]
                             FROM [dbo].[LogNotify] ln
-                            WHERE ln.ToUserId = '@ToUserId'";
-            var parameters = new
-            {
-                ToUserId = toUserId
-            };
+                            WHERE ln.ToUserId = '{toUserId}'";
 
-            var result = await _readConnection.QueryAsync<LogNotify>(cmd, parameters);
+            var result = await _readConnection.QueryAsync<LogNotify>(cmd);
             return result;
+
         }
     }
 }

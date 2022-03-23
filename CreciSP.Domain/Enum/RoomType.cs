@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CreciSP.Domain.Enum
 {
-    public enum RoomType : int
+    public enum RoomType 
     {
         Meeting = 1,
         Common = 2

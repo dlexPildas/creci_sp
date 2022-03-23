@@ -18,7 +18,15 @@ namespace CreciSP.Domain.Models
         public virtual Room Room { get;  private set; }
 
         public Equipment() {}
-        
+
+        public Equipment(Guid id, int number, EquipmentType type, string description, Guid? roomId)
+        {
+            Id = id;
+            Number = number;
+            Type = type;
+            Description = description;
+            RoomId = roomId;
+        }
 
         public void UnlinkRoom()
         {
