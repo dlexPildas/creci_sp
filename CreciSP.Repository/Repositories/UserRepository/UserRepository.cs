@@ -32,10 +32,10 @@ namespace CreciSP.Domain.Services.UserRepository
                                ,[Type]
                                ,[Status]
                            FROM [dbo].[User] u
-                           WHERE (@Name is null OR u.[Name] like '%@Name%') AND
-                           (@Cpf is null OR u.[Cpf] like '%@Cpf%') AND
-                           (@Email is null OR u.[Email] like '%@Email%') AND
-                           (@Type is null OR u.[Type] = @Type) AND
+                           WHERE (@Name is null OR u.[Name] like '%@Name%') OR
+                           (@Cpf is null OR u.[Cpf] like '%@Cpf%') OR
+                           (@Email is null OR u.[Email] like '%@Email%') OR
+                           (@Type is null OR u.[Type] = @Type) OR
                            (@Status is null OR u.[Status] = @Status)";
             var parameters = new
             {

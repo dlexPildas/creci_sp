@@ -14,7 +14,7 @@ namespace CreciSP.Domain.Models
         public string Name { get;  private set; }
         public string Cpf { get;  private set; }
         public string Email { get;  private set; }
-        public UserTypeEnum Type { get;  private set; }
+        public UserType Type { get;  private set; }
         public bool Status { get;  private set; }
         public string Password { get;  private set; }
         public virtual ICollection<Booking> Bookings { get;  private set; }
@@ -22,7 +22,7 @@ namespace CreciSP.Domain.Models
 
         public User() {}
 
-        public User(Guid id, string name, string cpf, string email, UserTypeEnum type, bool status, string password)
+        public User(Guid id, string name, string cpf, string email, UserType type, bool status, string password)
         {
             Id = id;
             Name = name;

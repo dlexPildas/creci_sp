@@ -31,8 +31,8 @@ namespace CreciSP.Domain.Services.BookingRepository
                                ,[RoomId]
                                ,[UserId]
                            FROM [dbo].[Booking] b
-                           WHERE (@Date is null OR r.[Date] = '@Date') AND
-                           (@RoomId is null OR r.[RoomId] = @RoomId) AND
+                           WHERE (@Date is null OR r.[Date] = '@Date') OR
+                           (@RoomId is null OR r.[RoomId] = @RoomId) OR
                            (@UserId is null OR r.[UserId] = @UserId)";
 
             var parameters = new
