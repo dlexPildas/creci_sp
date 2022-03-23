@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AlertService } from 'src/app/shared/services/alert.service';
 import { UserTypeEnum } from 'src/app/users/models/user-type-enum';
 import { RoomType } from '../../Models/room-type.model';
 import { RoomService } from '../../Services/room.service';
@@ -17,7 +18,7 @@ export class CreateRoomComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private _snackBar: MatSnackBar,
+    private alertService: AlertService,
     public dialogRef: MatDialogRef<CreateRoomComponent>,
     private roomService: RoomService
   ) { }
@@ -41,19 +42,10 @@ export class CreateRoomComponent implements OnInit {
     this.roomService.saveRoom(values)
       .subscribe(
         () => {
-          this.alertMessage('Sala criada com sucesso!')
+          this.alertService.alertMessage('Sala criada com sucesso!')
           this.dialogRef.close(true);
         },
-        () => this.alertMessage('Erro ao criar uma sala')
+        () => this.alertService.alertMessage('Erro ao criar sala')
       )
   }
-
-  alertMessage(message: string): void {
-    this._snackBar.open(message, 'Fechar', {
-      horizontalPosition: 'end',
-      verticalPosition: 'bottom',
-      duration: 5000,
-    });
-  }
-
 }

@@ -21,7 +21,7 @@ export class RoomService {
         number: filter.number ?? '',
         floor: filter.floor ?? '',
         capacity: filter.capacity ?? '',
-        type: filter.type === RoomType.Todos ? '' : filter.type,
+        type: filter.type === RoomType.Todos ? '' : filter.type ?? '',
         status: filter.status ?? '',
       }
     });

@@ -1,4 +1,6 @@
-<h1 mat-dialog-title>Criar um novo usuário</h1>
+<h1 mat-dialog-title>
+  {{idUser ? 'Editar usuário' : 'Criar usuário'}}
+</h1>
 
 <div mat-dialog-content>
   <form [formGroup]="userForm">
@@ -13,14 +15,14 @@
       <div class="col-sm-12 col-md-6">
         <mat-form-field class="w-100" appearance="outline">
           <mat-label>CPF</mat-label>
-          <input type="text" formControlName="cpf" mask="000.000.000-99" matInput >
+          <input type="text" formControlName="cpf" mask="000.000.000-99" matInput [disabled]="idUser">
         </mat-form-field>
       </div>
 
       <div class="col-sm-12 col-md-6">
         <mat-form-field class="w-100" appearance="outline">
           <mat-label>Tipo de Usuário</mat-label>
-          <mat-select formControlName="type" disableRipple>
+          <mat-select [disabled]="idUser" formControlName="type" disableRipple>
             <mat-option [value]="userTypeEnum.Administrator">Administrador</mat-option>
             <mat-option [value]="userTypeEnum.Common">Usuário comum</mat-option>
           </mat-select>
@@ -30,7 +32,7 @@
       <div class="col-sm-12 col-md-6">
         <mat-form-field class="w-100" appearance="outline">
           <mat-label>Status do Usuário</mat-label>
-          <mat-select formControlName="status" disableRipple>
+          <mat-select [disabled]="idUser" formControlName="status" disableRipple>
             <mat-option [value]="true">Ativo</mat-option>
             <mat-option [value]="false">Inativo</mat-option>
           </mat-select>
@@ -54,13 +56,13 @@
       <div class="col-sm-12 col-md-6">
         <mat-form-field class="w-100" appearance="outline">
           <mat-label>Senha</mat-label>
-          <input type="password" formControlName="password" matInput >
+          <input [disabled]="idUser" type="password" formControlName="password" matInput >
         </mat-form-field>
       </div>
 
       <div class="col-sm-12 col-md-6">
         <mat-form-field class="w-100" appearance="outline">
-          <mat-label>Confirmar Senhar</mat-label>
+          <mat-label>Confirmar Senha</mat-label>
           <input type="password" formControlName="confirmPassword" matInput >
         </mat-form-field>
       </div>

@@ -32,20 +32,15 @@ namespace CreciSP.Domain.Services.UserRepository
                                ,[Type]
                                ,[Status]
                            FROM [dbo].[User] u
-                           WHERE (@Name is null OR u.[Name] like '%@Name%') AND
-                           (@Cpf is null OR u.[Cpf] like '%@Cpf%') AND
-                           (@Email is null OR u.[Email] like '%@Email%') AND
-                           (@Type is null OR u.[Type] = @Type) AND
-                           (@Status is null OR u.[Status] = @Status)";
-            var parameters = new
-            {
-                Name = userFilter.Name,
-                Cpf = userFilter.Cpf,
-                Email = userFilter.Email,
-                Type = userFilter.Type,
-                Status = userFilter.Status
-            };
-            var result = await _readConnection.QueryAsync<User>(cmd, parameters);
+                           WHERE 1=1
+                            {(filter.Name != default ? $"AND (u.[Name] like '%{filter.Name}%')" : "")}
+                            {(filter.Cpf != default ? $"AND ( u.[Cpf] like '%{filter.Cpf}%')" : "")}
+                            {(filter.Email != default ? $"AND (u.[Email] like '{filter.Email}')" : "")}
+                            {(filter.Type != default ? $"AND (u.[Type] = {(int)filter.Type})" : "")}
+                            {(filter.Password != default ? $"AND (u.[Password] = {filter.Password})" : "")}
+                            {(filter.Status != default ? $"AND (u.[Status] = {(filter.Status.Value ? 1 : 0)})" : "")}";
+           
+            var result = await _readConnection.QueryAsync<User>(cmd);
             return result;
         }
 

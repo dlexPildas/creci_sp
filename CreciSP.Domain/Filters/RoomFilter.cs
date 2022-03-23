@@ -13,10 +13,10 @@ namespace CreciSP.Domain.Filters
         {
 
         }
-        public int? Number { get; private set; }
-        public int? Floor { get; private set; }
-        public int? Capacity { get; private set; }
-        public RoomType? Type { get; private set; }
-        public bool? Status { get; private set; }
+        public int? Number { get; set; }
+        public int? Floor { get; set; }
+        public int? Capacity { get; set; }
+        public RoomType? Type { get; set; }
+        public bool? Status { get; set; }
     }
 }
