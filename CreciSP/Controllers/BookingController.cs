@@ -1,4 +1,5 @@
-﻿using _01.CreciSP.Mvc.Extensions;
+﻿using _01.CreciSP.Mvc.Dtos.BookingDto;
+using _01.CreciSP.Mvc.Extensions;
 using AutoMapper;
 using CreciSP.Application.Services.BookingService;
 using CreciSP.Domain.Filters;
@@ -7,6 +8,7 @@ using CreciSP.Mvc.Dtos.BookingDto;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CreciSP.Mvc.Controllers
@@ -52,11 +54,13 @@ namespace CreciSP.Mvc.Controllers
         /// <param name="bookingFilter"></param>
         /// <returns>Coleção de Reservas</returns>
         [HttpGet]
-        public async Task<IActionResult> GetBookingsByFilter(BookingFilter bookingFilter)
+        public async Task<IActionResult> GetBookingsByFilter([FromQuery] BookingFilter bookingFilter)
         {
             var result = await _bookingService.GetBookingsByFilter(bookingFilter);
 
-            return Ok(result);
+            var bookingMapped = _mapper.Map<ICollection<BookingReadDto>>(result);
+
+            return Ok(bookingMapped);
         }
 
         

@@ -9,6 +9,7 @@ namespace CreciSP.Mvc.AutoMapper
         public UserMapper()
         {
             CreateMap<UserCreateDto, User>();
+            CreateMap<UserUpdateDto, User>().ReverseMap();
         }
     }
 }

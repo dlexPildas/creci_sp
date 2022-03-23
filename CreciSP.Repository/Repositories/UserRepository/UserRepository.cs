@@ -34,9 +34,10 @@ namespace CreciSP.Domain.Services.UserRepository
                            FROM [dbo].[User] u
                            WHERE 1=1
                             {(filter.Name != default ? $"AND (u.[Name] like '%{filter.Name}%')" : "")}
-                            {(filter.Cpf != default ? $"AND ( u.[Name] like '%{filter.Cpf}%')" : "")}
+                            {(filter.Cpf != default ? $"AND ( u.[Cpf] like '%{filter.Cpf}%')" : "")}
                             {(filter.Email != default ? $"AND (u.[Email] like '{filter.Email}')" : "")}
                             {(filter.Type != default ? $"AND (u.[Type] = {(int)filter.Type})" : "")}
+                            {(filter.Password != default ? $"AND (u.[Password] = {filter.Password})" : "")}
                             {(filter.Status != default ? $"AND (u.[Status] = {(filter.Status.Value ? 1 : 0)})" : "")}";
            
             var result = await _readConnection.QueryAsync<User>(cmd);

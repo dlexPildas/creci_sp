@@ -63,7 +63,7 @@ namespace CreciSP.Mvc.Controllers
         /// Desativar Sala
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>True se operação for realizada com Sucesso</returns>
+        /// <returns>True se operação for realizada com Sucesso</returns>   
         [HttpPut]
         [Route("{id}/inactive")]
         public async Task<IActionResult> InactiveUser(Guid id)

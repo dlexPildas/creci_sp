@@ -5,8 +5,11 @@ export class UserFilterModel {
   cpf: string;
   email: string;
   type: UserTypeEnum;
-  status: boolean;
+  status: boolean | number;
+  password: string;
 
   constructor() {
+    this.type = UserTypeEnum.Todos;
+    this.status = -1;
   }
 }

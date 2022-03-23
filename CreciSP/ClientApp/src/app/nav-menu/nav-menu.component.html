@@ -9,17 +9,33 @@
       </button>
 
       <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end" [ngClass]="{ show: isExpanded }">
-        <ul class="navbar-nav flex-grow">
-          <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+        <ul class="navbar-nav flex-grow mt-3" >
+          <li class="nav-item mr-3" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link text-dark" [routerLink]="['']">Home</a>
           </li>
 
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          <li class="nav-item mr-3" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/users']">Usuários</a>
           </li>
 
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          <li class="nav-item mr-3" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/rooms']">Sala</a>
+          </li>
+
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/bookings']">Reservas</a>
+          </li>
+
+          <li *ngIf="isLogged" class="nav-item">
+            <a (click)="logout()" style="cursor: pointer;" class="nav-link text-dark">Sair</a>
+          </li>
+
+          <li *ngIf="!isLogged" class="nav-item">
+            <a (click)="login()" style="cursor: pointer;" class="nav-link text-dark">Entrar</a>
+          </li>
+
+          <li class="nav-item">
+            <app-notification></app-notification>
           </li>
         </ul>
       </div>

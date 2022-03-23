@@ -32,9 +32,9 @@ namespace CreciSP.Domain.Services.BookingRepository
                                ,[UserId]
                            FROM [dbo].[Booking] b
                            WHERE 1=1
-                            {(filter.Date != default ? $"AND (r.[Date] = '{filter.Date.ToString("dd/MM/yyyy")}')" : "")}
-                            {(filter.RoomId != default ? $"AND ( r.[RoomId] = {filter.RoomId})" : "")}
-                            {(filter.UserId != default ? $"AND (r.[UserId] = {filter.UserId})" : "")}";
+                            {(filter.Date != default ? $"AND (b.[Date] = {filter.Date?.ToString("dd/MM/yyyy")})" : "")}
+                            {(filter.RoomId != default ? $"AND ( b.[RoomId] = {filter.RoomId})" : "")}
+                            {(filter.UserId != default ? $"AND (b.[UserId] = '{filter.UserId}')" : "")}";
 
             var parameters = new
             {
