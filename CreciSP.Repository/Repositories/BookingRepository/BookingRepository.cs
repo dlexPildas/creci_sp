@@ -35,7 +35,7 @@ namespace CreciSP.Domain.Services.BookingRepository
                            INNER JOIN Room r on b.RoomId = r.Id
                            WHERE 1=1
                             {(filter.Date != default ? $"AND (b.[Date] = {filter.Date?.ToString("dd/MM/yyyy")})" : "")}
-                            {(filter.RoomId != default ? $"AND ( b.[RoomId] = {filter.RoomId})" : "")}
+                            {(filter.RoomId != default ? $"AND ( b.[RoomId] = '{filter.RoomId}')" : "")}
                             {(filter.UserId != default ? $"AND (b.[UserId] = '{filter.UserId}')" : "")}";
 
             var parameters = new

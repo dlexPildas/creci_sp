@@ -27,6 +27,7 @@ namespace _06.CreciSP.Test
 
         public Booking booking;
         public BookingFilter bookingFilter;
+        public BookingFilter bookingFilterLite;
 
         public LogNotify logNotify;
 
@@ -53,6 +54,7 @@ namespace _06.CreciSP.Test
 
             booking = new Booking(idGuid, DateTime.Now, new TimeSpan(15, 00, 00), new TimeSpan(17, 00, 00), room, user.Id);
             bookingFilter = new BookingFilter { Date = DateTime.Now, StartTime = new TimeSpan(15, 00, 00), EndTime = new TimeSpan(17, 00, 00), RoomId = room.Id, UserId = user.Id };
+            bookingFilterLite = new BookingFilter { RoomId = idGuid };
 
             var Message = $"Reserva Sala {booking.Room.Number} no dia {booking.Date.ToString("dd/MM/yyyy")} das {booking.StartTime.ToString()} às {booking.EndTime.ToString()}";
             logNotify = new LogNotify(Message, LogType.RemoveBooking, DateTime.Now, false, booking.UserId);
@@ -72,8 +74,12 @@ namespace _06.CreciSP.Test
             mocker.GetMock<IBookingRepository>().Setup(x => x.GetBookingById(idGuid).Result)
                   .Returns(booking);
 
+            mocker.GetMock<IBookingRepository>().Setup(x => x.GetBookingsByFilter(bookingFilterLite).Result)
+                .Returns(new Collection<Booking> { booking });
+
             mocker.GetMock<IBookingRepository>().Setup(x => x.GetBookingsByFilter(bookingFilter).Result)
                 .Returns(new Collection<Booking> { booking });
+
         }
     }
 }

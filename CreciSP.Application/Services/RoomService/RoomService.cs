@@ -105,7 +105,7 @@ namespace CreciSP.Application.Services.RoomService
             var bookingFilter = new BookingFilter { RoomId = room.Id };
             var bookings = _bookingRepository.GetBookingsByFilter(bookingFilter).Result;
 
-            if (bookings.Any())
+            if (bookings != null)
             {
                 AddValidationFailure("Essa Sala possui Reservas!");
                 return false;
