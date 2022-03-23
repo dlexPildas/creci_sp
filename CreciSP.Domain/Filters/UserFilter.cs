@@ -9,10 +9,6 @@ namespace CreciSP.Domain.Filters
 {
     public class UserFilter
     {
-        public UserFilter()
-        {
-
-        }
         public string Name { get; set; }
         public string Cpf { get;  set; }
         public string Email { get; set; }

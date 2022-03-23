@@ -52,7 +52,7 @@ namespace CreciSP.Mvc.Controllers
         /// <param name="roomFilter"></param>
         /// <returns>Coleção de Salas</returns>
         [HttpGet]
-        public async Task<IActionResult> GetRoomsByFilter(RoomFilter roomFilter)
+        public async Task<IActionResult> GetRoomsByFilter([FromQuery] RoomFilter roomFilter)
         {
             var result = await _roomService.GetRoomsByFilter(roomFilter);
 

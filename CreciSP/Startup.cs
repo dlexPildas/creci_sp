@@ -1,6 +1,6 @@
 using CreciSP.CrossCutting;
-using CreciSP.Repository.Context;
 using FluentValidation.AspNetCore;
+using CreciSP.Repository.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -9,6 +9,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Http;
+using FluentValidation;
+using CreciSP.Domain.Validators;
+using CreciSP.Domain.Models;
 
 namespace CreciSP
 {
@@ -24,21 +28,16 @@ namespace CreciSP
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers()
-                .AddFluentValidation(options =>
-                {
-                    options.RegisterValidatorsFromAssemblyContaining<Startup>();
-                });
-
+            
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddAutoMapper(GetType().Assembly);
 
             DependencyInjection.InjectDependencies(services, Configuration);
 
-            //services.AddScoped<IUserService, UserService>();
+            services.AddControllersWithViews()
+                .AddFluentValidation();
 
-            services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -68,6 +67,8 @@ namespace CreciSP
             }
 
             app.UseRouting();
+
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseEndpoints(endpoints =>
             {

@@ -10,6 +10,10 @@ using Microsoft.Extensions.DependencyInjection;
 using _03.CreciSP.Domain.Notifier;
 using CreciSP.Domain.Services.LogNotifyRepository;
 using CreciSP.Application.Services.LogNotifyService;
+using CreciSP.Domain.Services.LogNotifyRepository;
+using CreciSP.Domain.Validators;
+using FluentValidation;
+using CreciSP.Domain.Models;
 using CreciSP.Application.Services.EquipmentService;
 using CreciSP.Domain.Services.EquipmentRepository;
 
@@ -39,16 +43,12 @@ namespace CreciSP.CrossCutting
 
             services.AddScoped<INotifierService, NotifierService>();
 
-            //services.RegisterAssemblyTypes(typeof(INotifierService).Assembly)
-            //    .AsSelf()
-            //    .AsImplementedInterfaces()
-            //    .InstancePerLifetimeScope();
 
-            //services.Scan(scan => scan
-            //    .FromAssemblies(typeof(yourassembly).GetTypeInfo().Assembly)
-            //    .AddClasses()
-            //    .AsImplementedInterfaces()
-            //    .WithScopedLifetime());
+            #region Validators
+            services.AddTransient<IValidator<User>, UserValidator>();
+            services.AddTransient<IValidator<Room>, RoomValidator>();
+            services.AddTransient<IValidator<Booking>, BookingValidator>();
+            #endregion
         }
     }
 }
