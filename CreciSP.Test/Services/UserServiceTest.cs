@@ -1,5 +1,6 @@
 ﻿using CreciSP.Application.Services.UserService;
 using CreciSP.Domain.Enum;
+using CreciSP.Domain.Filters;
 using CreciSP.Domain.Models;
 using CreciSP.Domain.Services.UserRepository;
 using Moq;
@@ -65,5 +66,42 @@ namespace _06.CreciSP.Test.Services
             Assert.NotEqual("email@atualizado.com", user.Email);
             autoMockerFixture.mocker.GetMock<IUserRepository>().Verify(x => x.SaveChangesAsync(), Times.Exactly(0));
         }
+
+
+        [Fact]
+        public async void GetByFilterUser_GetClient_MustFind()
+        {
+            // Arrange
+            AutoMockerFixture autoMockerFixture = new AutoMockerFixture();
+            var userService = autoMockerFixture.mocker.CreateInstance<UserService>();
+            var user = autoMockerFixture.user;
+
+
+            // Act
+            var userFind = await userService.GetUsersByFilters(autoMockerFixture.userFilter);
+
+            // Assert
+            Assert.NotNull(userFind);
+            Assert.Equal(1, userFind.Count);
+            autoMockerFixture.mocker.GetMock<IUserRepository>().Verify(x => x.GetUsersByFilters(autoMockerFixture.userFilter), Times.Exactly(1));
+        }
+
+        [Fact]
+        public async void GetByIdUser_GetClient_MustFind()
+        {
+            // Arrange
+            AutoMockerFixture autoMockerFixture = new AutoMockerFixture();
+            var userService = autoMockerFixture.mocker.CreateInstance<UserService>();
+            var user = autoMockerFixture.user;
+
+
+            // Act
+            var equipmentFind = await userService.GetUserById(autoMockerFixture.idGuid);
+
+            // Assert
+            Assert.NotNull(equipmentFind);
+            autoMockerFixture.mocker.GetMock<IUserRepository>().Verify(x => x.GetUserById(autoMockerFixture.idGuid), Times.Exactly(1));
+        }
+
     }
 }
