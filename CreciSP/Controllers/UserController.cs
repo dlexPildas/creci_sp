@@ -119,10 +119,6 @@ namespace CreciSP.Mvc.Controllers
         {
             var user = _mapper.Map<User>(userDto);
 
-            ModelState.AddValidationResult(await _validatorFactory.GetValidator<User>().ValidateAsync(user));
-            if (!ModelState.IsValid)
-                return Conflict(ModelState.GetValidationProblemDetails());
-
             await _userService.UpdateUser(user);
 
             ModelState.AddValidationResult(_userService.ValidationResult());

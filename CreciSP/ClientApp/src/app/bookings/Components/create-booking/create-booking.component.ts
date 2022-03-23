@@ -1,3 +1,4 @@
+import { AuthService } from './../../../shared/services/auth.service';
 import { RoomFilterModel } from './../../../rooms/Models/room-filter.model';
 import { RoomService } from './../../../rooms/Services/room.service';
 import { Component, OnInit } from '@angular/core';
@@ -22,7 +23,8 @@ export class CreateBookingComponent implements OnInit {
     private alertService: AlertService,
     public dialogRef: MatDialogRef<CreateBookingComponent>,
     private bookingService: BookingService,
-    private roomService: RoomService
+    private roomService: RoomService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -35,7 +37,7 @@ export class CreateBookingComponent implements OnInit {
       date: ['', Validators.required],
       startTime: ['', Validators.required],
       endTime: ['', Validators.required],
-      userId: ['e9b179ee-528f-47ef-bb7c-08da0c3c92b1'],
+      userId: [''],
       roomId: ['', Validators.required],
     });
   }
@@ -50,6 +52,8 @@ export class CreateBookingComponent implements OnInit {
 
     values.startTime = `${values.startTime.slice(0,2)}:${values.startTime.slice(-2)}`
     values.endTime = `${values.endTime.slice(0,2)}:${values.endTime.slice(-2)}`
+
+    values.userId = this.authService.getUserLogged().id;
 
     this.bookingService.saveBooking(values)
       .subscribe(

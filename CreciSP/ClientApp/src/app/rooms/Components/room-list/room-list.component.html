@@ -75,15 +75,15 @@
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>  </th>
     <td class="text-align" mat-cell *matCellDef="let element">
-      <button *ngIf="!element.status" (click)="activeRoom(element.id)" class="active-button mr-1" mat-mini-fab aria-label="Example icon button with a home icon">
+      <button *ngIf="!element.status && isAdm" (click)="activeRoom(element.id)" class="active-button mr-1" mat-mini-fab aria-label="Example icon button with a home icon">
         <mat-icon>done</mat-icon>
       </button>
 
-      <button *ngIf="element.status" (click)="inactiveRoom(element.id)" class="inactive-button mr-1" mat-mini-fab aria-label="Example icon button with a home icon">
+      <button *ngIf="element.status && isAdm" (click)="inactiveRoom(element.id)" class="inactive-button mr-1" mat-mini-fab aria-label="Example icon button with a home icon">
         <mat-icon>cancel</mat-icon>
       </button>
 
-      <button class="" (click)="canDeleteRoom(element.id)" mat-mini-fab aria-label="Example icon button with a home icon">
+      <button *ngIf="isAdm" class="" (click)="canDeleteRoom(element.id)" mat-mini-fab aria-label="Example icon button with a home icon">
         <mat-icon>delete</mat-icon>
       </button>
     </td>

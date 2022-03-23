@@ -6,6 +6,6 @@
   </div>
 </div>
 
-<button (click)="opeModalCreateUser()" color="primary" class="button-add" mat-fab>
+<button *ngIf="isAdm" (click)="opeModalCreateUser()" color="primary" class="button-add" mat-fab>
   <mat-icon>add</mat-icon>
 </button>

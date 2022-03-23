@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModalConfimationComponent } from 'src/app/shared/components/modal-confimation/modal-confimation.component';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { UserTypeEnum } from 'src/app/users/models/user-type-enum';
 import { BoookingFilterModel } from '../../Models/booking-filter.model';
 import { BookingModel } from '../../Models/booking.model';
 import { BookingService } from '../../services/booking.service';
@@ -20,11 +22,18 @@ export class BookingListComponent implements OnInit {
     private bookingService: BookingService,
     private _snackBar: MatSnackBar,
     public dialog: MatDialog,
+    private authService: AuthService
   ) {
     this.filters = new BoookingFilterModel();
   }
 
   ngOnInit(): void {
+    const user = this.authService.getUserLogged();
+
+    if (user.type === UserTypeEnum.Common) {
+      this.filters.userId = user.id;
+    }
+
     this.getBookings();
   }
 

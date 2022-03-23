@@ -6,6 +6,8 @@ import { RoomFilterModel } from '../../Models/room-filter.model';
 import { RoomModel } from '../../Models/room.model';
 import { RoomService } from '../../Services/room.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { UserTypeEnum } from 'src/app/users/models/user-type-enum';
 
 @Component({
   selector: 'app-room-list',
@@ -17,16 +19,20 @@ export class RoomListComponent implements OnInit {
   dataSource: RoomModel[];
   filters: RoomFilterModel;
   roomType = RoomType;
+  isAdm = false;
 
   constructor(
     private _snackBar: MatSnackBar,
     public dialog: MatDialog,
     private roomService: RoomService,
+    private authService: AuthService
   ) {
     this.filters = new RoomFilterModel();
   }
 
   ngOnInit(): void {
+    this.isAdm = this.authService.userTypeInfo() === UserTypeEnum.Administrator
+
     this.getRooms();
   }
 

@@ -27,10 +27,6 @@
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>  </th>
     <td class="text-align" mat-cell *matCellDef="let element">
-      <button *ngIf="!element.status" (click)="activeUser(element.id)" class="active-button mr-1" mat-mini-fab aria-label="Example icon button with a home icon">
-        <mat-icon>done</mat-icon>
-      </button>
-
       <button class="" (click)="canDeleteBooking(element.id)" mat-mini-fab aria-label="Example icon button with a home icon">
         <mat-icon>delete</mat-icon>
       </button>

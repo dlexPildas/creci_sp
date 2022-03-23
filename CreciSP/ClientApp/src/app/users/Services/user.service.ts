@@ -1,3 +1,4 @@
+import { UserTypeEnum } from './../models/user-type-enum';
 import { UserFilterModel } from './../models/user-filter.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -21,14 +22,21 @@ export class UserService {
         name: filter.name ?? '',
         cpf: filter.cpf ?? '',
         email: filter.email ?? '',
-        type: filter.type ?? '',
-        status: filter.status ?? '',
+        password: filter.password ?? '',
+        type: filter.type === UserTypeEnum.Todos ? '' : filter.type ?? '',
+        status: filter.status === -1 ? '' : filter.status ?? '',
       }
     });
   }
 
+  getUserById(id: string): Observable<UserModel> {
+    return this.http.get<UserModel>(`${this.base_url}/${id}`);
+  }
+
   saveUser(user: UserModel ): Observable<boolean> {
-    return this.http.post<boolean>(`${this.base_url}`, user);
+    if(!user.id) return this.http.post<boolean>(`${this.base_url}`, user);
+
+    return this.http.put<boolean>(`${this.base_url}`, user);
   }
 
   activeUser(id: string): Observable<boolean> {

@@ -14,5 +14,7 @@ namespace CreciSP.Domain.Filters
         public string Email { get; set; }
         public UserType? Type { get; set; }
         public bool? Status { get; set; }
+
+        public string Password { get; set; }
     }
 }
