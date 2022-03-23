@@ -1,3 +1,4 @@
+import { CreateEquipamentComponent } from './../create-equipament/create-equipament.component';
 import { ModalConfimationComponent } from './../../../shared/components/modal-confimation/modal-confimation.component';
 import { RoomType } from './../../Models/room-type.model';
 import { Component, OnInit } from '@angular/core';
@@ -118,4 +119,9 @@ export class RoomListComponent implements OnInit {
       );
   }
 
+  createEquipament(): void {
+    this.dialog.open(CreateEquipamentComponent)
+      .afterClosed()
+      .subscribe();
+  }
 }

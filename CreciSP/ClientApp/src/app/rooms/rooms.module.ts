@@ -7,6 +7,7 @@ import { RoomPanelComponent } from './pages/room-panel/room-panel.component';
 import { RoomListComponent } from './components/room-list/room-list.component';
 import { CreateRoomComponent } from './components/create-room/create-room.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { CreateEquipamentComponent } from './components/create-equipament/create-equipament.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { NgxMaskModule } from 'ngx-mask';
     RoomPanelComponent,
     RoomListComponent,
     CreateRoomComponent,
+    CreateEquipamentComponent,
   ],
   imports: [
     CommonModule,
