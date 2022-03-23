@@ -28,6 +28,8 @@ namespace _06.CreciSP.Test
         public Booking booking;
         public BookingFilter bookingFilter;
 
+        public LogNotify logNotify;
+
 
 
         public Guid idGuid = Guid.NewGuid();
@@ -49,8 +51,11 @@ namespace _06.CreciSP.Test
             roomInactive = new Room(idGuid, 1, 1, 5, RoomType.Common, false, null);
             roomFilter = new RoomFilter { Capacity = room.Capacity, Floor = room.Floor, Number = room.Number, Status = room.Status, Type = room.Type };
 
-            booking = new Booking(idGuid, DateTime.Now, new TimeSpan(15, 00, 00), new TimeSpan(17, 00, 00), room.Id, user.Id);
+            booking = new Booking(idGuid, DateTime.Now, new TimeSpan(15, 00, 00), new TimeSpan(17, 00, 00), room, user.Id);            
             bookingFilter = new BookingFilter { Date = DateTime.Now, StartTime = new TimeSpan(15, 00, 00), EndTime = new TimeSpan(17, 00, 00), RoomId = room.Id, UserId = user.Id };
+
+            var Message = $"Reserva Sala {booking.Room.Number} no dia {booking.Date.ToString("dd/MM/yyyy")} das {booking.StartTime.ToString()} às {booking.EndTime.ToString()}";
+            logNotify = new LogNotify(Message, LogType.RemoveBooking, DateTime.Now, false, booking.UserId);
         }
 
         private void SetMocks()
