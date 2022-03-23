@@ -46,9 +46,7 @@ namespace _06.CreciSP.Test.Services
             await bookingService.DeleteBooking(autoMockerFixture.idGuid, true);
 
             // Assert
-            autoMockerFixture.mocker.GetMock<ILogNotifyRepository>().Verify(x => x.Add(logNotify), Times.Exactly(1)); 
             autoMockerFixture.mocker.GetMock<IBookingRepository>().Verify(x => x.Delete(booking), Times.Exactly(1));
-            autoMockerFixture.mocker.GetMock<ILogNotifyRepository>().Verify(x => x.SaveChangesAsync(), Times.Exactly(1));
             autoMockerFixture.mocker.GetMock<IBookingRepository>().Verify(x => x.SaveChangesAsync(), Times.Exactly(1));
 
         }
