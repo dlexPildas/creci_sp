@@ -77,16 +77,20 @@
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>  </th>
     <td class="text-align" mat-cell *matCellDef="let element">
-      <button *ngIf="!element.status && isAdm" (click)="activeRoom(element.id)" class="active-button mr-1" mat-mini-fab aria-label="Example icon button with a home icon">
+      <button *ngIf="!element.status && isAdm" (click)="activeRoom(element.id)" class="active-button mr-3" mat-mini-fab aria-label="Example icon button with a home icon">
         <mat-icon>done</mat-icon>
       </button>
 
-      <button *ngIf="element.status && isAdm" (click)="inactiveRoom(element.id)" class="inactive-button mr-1" mat-mini-fab aria-label="Example icon button with a home icon">
+      <button *ngIf="element.status && isAdm" (click)="inactiveRoom(element.id)" class="inactive-button mr-3" mat-mini-fab aria-label="Example icon button with a home icon">
         <mat-icon>cancel</mat-icon>
       </button>
 
-      <button *ngIf="isAdm" class="" (click)="canDeleteRoom(element.id)" mat-mini-fab aria-label="Example icon button with a home icon">
+      <button *ngIf="isAdm" class="mr-3" (click)="canDeleteRoom(element.id)" mat-mini-fab aria-label="Example icon button with a home icon">
         <mat-icon>delete</mat-icon>
+      </button>
+
+      <button *ngIf="isAdm" class="" (click)="linkEquipamentToRoom(element.id)" mat-mini-fab aria-label="Example icon button with a home icon">
+        <mat-icon>sync</mat-icon>
       </button>
     </td>
   </ng-container>

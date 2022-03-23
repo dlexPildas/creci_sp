@@ -96,7 +96,7 @@ namespace CreciSP.Mvc.Controllers
         /// <param name="roomId"></param>
         /// <returns>True se operação for realizada com Sucesso</returns>
         [HttpPut]
-        [Route("{id}/linkroomequipment")]
+        [Route("{id}/link-room-equipment")]
         public async Task<IActionResult> LinkRoomEquipment(Guid id, Guid roomId)
         {
             await _equipmentService.LinkRoomEquipment(id, roomId);

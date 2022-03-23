@@ -1,4 +1,3 @@
-import { CreateEquipamentComponent } from './../create-equipament/create-equipament.component';
 import { ModalConfimationComponent } from './../../../shared/components/modal-confimation/modal-confimation.component';
 import { RoomType } from './../../Models/room-type.model';
 import { Component, OnInit } from '@angular/core';
@@ -7,8 +6,10 @@ import { RoomFilterModel } from '../../Models/room-filter.model';
 import { RoomModel } from '../../Models/room.model';
 import { RoomService } from '../../Services/room.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserTypeEnum } from 'src/app/users/models/user-type-enum';
+import { CreateEquipamentComponent } from '../create-equipament/create-equipament.component';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { LinkRoomEquipmentComponent } from '../link-room-equipment/link-room-equipment.component';
 
 @Component({
   selector: 'app-room-list',
@@ -121,6 +122,17 @@ export class RoomListComponent implements OnInit {
 
   createEquipament(): void {
     this.dialog.open(CreateEquipamentComponent)
+      .afterClosed()
+      .subscribe();
+  }
+
+  linkEquipamentToRoom(idRoom: string): void {
+    this.dialog.open(LinkRoomEquipmentComponent, {
+      width: '500px',
+      data: {
+        idRoom: idRoom
+      }
+    })
       .afterClosed()
       .subscribe();
   }

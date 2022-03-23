@@ -26,24 +26,21 @@ namespace CreciSP.Domain.Services.EquipmentRepository
 
         public async Task<ICollection<Equipment>> GetEquipmentsByFilters(EquipmentFilter equipmentFilter)
         {
-            var cmd = $@"SELECT SELECT [Id]
-                                      ,[Number]
-                                      ,[Type]
-                                      ,[Description]
-                                      ,[RoomId]
-                                  FROM [dbo].[Equipment]
-                           WHERE (@Number is null OR u.[Number] = @Number) AND
-                           (u.[RoomId] = '@RoomId') AND
-                           (@Description is null OR u.[Description] like '%@Description%') AND
-                           (@Type is null OR u.[Type] = @Type)";
-            var parameters = new
-            {
-                Number = equipmentFilter.Number,
-                RoomId = equipmentFilter.RoomId,
-                Description = equipmentFilter.Description,
-                Type = equipmentFilter.Type
-            };
-            var result = await _readConnection.QueryAsync<Equipment>(cmd, parameters);
+            var cmd = $@"SELECT  [Id]
+                                ,[Number]
+                                ,[Type]
+                                ,[Description]
+                                ,[RoomId]
+                            FROM [dbo].[Equipment] e
+                            WHERE 
+                                1=1
+                                {(equipmentFilter.Number != default ? $"AND (e.[Number] = {equipmentFilter.Number})" : "")}
+                                {(equipmentFilter.RoomId != default ? $"AND ( e.[RoomId] = {equipmentFilter.RoomId})" : "")}
+                                {(equipmentFilter.Description != default ? $"AND ( e.[Description] like '%{equipmentFilter.RoomId}%')" : "")}
+                                {(equipmentFilter.Type != default ? $"AND ( e.[Type] = {equipmentFilter.Type})" : "")}";
+            
+            
+            var result = await _readConnection.QueryAsync<Equipment>(cmd);
             return result;
         }
 

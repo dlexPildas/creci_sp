@@ -16,4 +16,12 @@ export class EquipmentService {
   saveEquipment(equipment: EquipmentModel): Observable<boolean> {
     return this.http.post<boolean>(`${this.base_url}`, equipment);
   }
+
+  getEquipments(): Observable<EquipmentModel[]> {
+    return this.http.get<EquipmentModel[]>(`${this.base_url}`);
+  }
+
+  linkToRoom(idRoom: string, equipmentId: string) {
+    return this.http.put<boolean>(`${this.base_url}/${equipmentId}/link-room-equipment?roomId=${idRoom}`, {});
+  }
 }

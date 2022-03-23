@@ -23,7 +23,7 @@ namespace CreciSP.Domain.Services.UserRepository
             _readConnection = readConnection;
         }
 
-        public async Task<ICollection<User>> GetUsersByFilters(UserFilter userFilter)
+        public async Task<ICollection<User>> GetUsersByFilters(UserFilter filter)
         {
             var cmd = $@"SELECT [Id]
                                ,[Name]

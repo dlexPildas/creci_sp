@@ -48,6 +48,7 @@ namespace CreciSP.CrossCutting
             services.AddTransient<IValidator<User>, UserValidator>();
             services.AddTransient<IValidator<Room>, RoomValidator>();
             services.AddTransient<IValidator<Booking>, BookingValidator>();
+            services.AddTransient<IValidator<Equipment>, EquipmentValidator>();
             #endregion
         }
     }
