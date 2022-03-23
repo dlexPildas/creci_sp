@@ -9,9 +9,11 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalConfimationComponent } from './components/modal-confimation/modal-confimation.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,9 @@ import { ModalConfimationComponent } from './components/modal-confimation/modal-
     MatDialogModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+
     FormsModule,
 
     ReactiveFormsModule,
@@ -40,9 +45,13 @@ import { ModalConfimationComponent } from './components/modal-confimation/modal-
     MatDialogModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatDatepickerModule,
 
     FormsModule,
     ReactiveFormsModule,
+  ],
+  providers: [
+    MatNativeDateModule
   ]
 })
 export class SharedModule { }

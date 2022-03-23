@@ -13,7 +13,7 @@ import { NgxMaskModule } from 'ngx-mask';
   declarations: [
     RoomPanelComponent,
     RoomListComponent,
-    CreateRoomComponent
+    CreateRoomComponent,
   ],
   imports: [
     CommonModule,

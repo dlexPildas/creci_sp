@@ -1,0 +1,43 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mb-3">
+
+  <!-- Nome Column -->
+  <ng-container matColumnDef="numberRoom">
+    <th mat-header-cell *matHeaderCellDef> Sala </th>
+    <td mat-cell *matCellDef="let element"> {{element.numberRoom}} </td>
+  </ng-container>
+
+  <!-- CPF Column -->
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Data </th>
+    <td mat-cell *matCellDef="let element"> {{element.date | date:'dd/MM/yyyy'}} </td>
+  </ng-container>
+
+  <!-- Email Column -->
+  <ng-container matColumnDef="startTime">
+    <th mat-header-cell *matHeaderCellDef> Hora Início </th>
+    <td mat-cell *matCellDef="let element"> {{element.startTime}} </td>
+  </ng-container>
+
+  <!-- Status Column -->
+  <ng-container matColumnDef="endTime">
+    <th mat-header-cell *matHeaderCellDef> Hora Fim </th>
+    <td mat-cell *matCellDef="let element"> {{element.endTime}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>  </th>
+    <td class="text-align" mat-cell *matCellDef="let element">
+      <button *ngIf="!element.status" (click)="activeUser(element.id)" class="active-button mr-1" mat-mini-fab aria-label="Example icon button with a home icon">
+        <mat-icon>done</mat-icon>
+      </button>
+
+      <button class="" (click)="canDeleteBooking(element.id)" mat-mini-fab aria-label="Example icon button with a home icon">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
