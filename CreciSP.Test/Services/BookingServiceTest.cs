@@ -4,6 +4,7 @@ using CreciSP.Domain.Enum;
 using CreciSP.Domain.Filters;
 using CreciSP.Domain.Models;
 using CreciSP.Domain.Services.BookingRepository;
+using CreciSP.Domain.Services.LogNotifyRepository;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -39,15 +40,17 @@ namespace _06.CreciSP.Test.Services
             AutoMockerFixture autoMockerFixture = new AutoMockerFixture();
             var bookingService = autoMockerFixture.mocker.CreateInstance<BookingService>();
             var booking = autoMockerFixture.booking;
+            var logNotify = autoMockerFixture.logNotify;
 
             // Act
             await bookingService.DeleteBooking(autoMockerFixture.idGuid, true);
 
             // Assert
-            autoMockerFixture.mocker.GetMock<IBookingRepository>().Verify(x => x.Add(booking), Times.Exactly(1)); 
+            autoMockerFixture.mocker.GetMock<ILogNotifyRepository>().Verify(x => x.Add(logNotify), Times.Exactly(1)); 
             autoMockerFixture.mocker.GetMock<IBookingRepository>().Verify(x => x.Delete(booking), Times.Exactly(1));
-            autoMockerFixture.mocker.GetMock<IBookingRepository>().Verify(x => x.SaveChangesAsync(), Times.Exactly(2));
-            
+            autoMockerFixture.mocker.GetMock<ILogNotifyRepository>().Verify(x => x.SaveChangesAsync(), Times.Exactly(1));
+            autoMockerFixture.mocker.GetMock<IBookingRepository>().Verify(x => x.SaveChangesAsync(), Times.Exactly(1));
+
         }
 
         [Fact]
@@ -59,40 +62,14 @@ namespace _06.CreciSP.Test.Services
             var booking = autoMockerFixture.booking;
 
             // Act
-            await bookingService.DeleteBooking(autoMockerFixture.idGuid, true);
+            await bookingService.DeleteBooking(autoMockerFixture.idGuid, false);
 
             // Assert
             autoMockerFixture.mocker.GetMock<IBookingRepository>().Verify(x => x.Delete(booking), Times.Exactly(1));
             autoMockerFixture.mocker.GetMock<IBookingRepository>().Verify(x => x.SaveChangesAsync(), Times.Exactly(1));
         }
 
-        [Fact]
-        public async void InactiveBooking_UpdateClient_MustInactive()
-        {
-            // Arrange
-            AutoMockerFixture autoMockerFixture = new AutoMockerFixture();
-            var bookingService = autoMockerFixture.mocker.CreateInstance<BookingService>();
-
-            // Act
-            await bookingService.GetBookingsByFilter(autoMockerFixture.bookingFilter);
-
-            // Assert
-            autoMockerFixture.mocker.GetMock<IBookingRepository>().Verify(x => x.SaveChangesAsync(), Times.Exactly(1));
-        }
-
-        [Fact]
-        public async void ActiveBooking_UpdateClient_MustActive()
-        {
-            // Arrange
-            AutoMockerFixture autoMockerFixture = new AutoMockerFixture();
-            var bookingService = autoMockerFixture.mocker.CreateInstance<BookingService>();
-
-            // Act
-            //await bookingService.ActiveBooking(autoMockerFixture.idGuid);
-
-            // Assert
-            autoMockerFixture.mocker.GetMock<IBookingRepository>().Verify(x => x.SaveChangesAsync(), Times.Exactly(1));
-        }
+                       
 
         [Fact]
         public async void GetBooking_GetClient_MustFind()

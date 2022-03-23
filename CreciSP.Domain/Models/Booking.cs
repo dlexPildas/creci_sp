@@ -23,6 +23,17 @@ namespace CreciSP.Domain.Models
             UserId = userId;
         }
 
+        public Booking(Guid id, DateTime date, TimeSpan startTime, TimeSpan endTime, Room room, Guid userId)
+        {
+            Id = id;
+            Date = date;
+            StartTime = startTime;
+            EndTime = endTime;
+            RoomId = room.Id;
+            Room = room;
+            UserId = userId;
+        }
+
         public Guid Id { get;  private set; }
         public DateTime Date { get;  private set; }
         public TimeSpan StartTime { get;  private set; }

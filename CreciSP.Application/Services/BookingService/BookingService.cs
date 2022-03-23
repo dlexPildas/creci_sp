@@ -70,11 +70,11 @@ namespace CreciSP.Application.Services.BookingService
 
             if (isAdmintrator)
             {
-                var Message = $"Reserva Sala {booking.Room.Number} no dia {booking.Date.ToString("dd/MM/yyyy")} das {booking.StartTime.ToString("hh:mm")} às {booking.EndTime.ToString("hh:mm")}";
+                var Message = $"Reserva Sala {booking.Room.Number} no dia {booking.Date.ToString("dd/MM/yyyy")} das {booking.StartTime.ToString()} às {booking.EndTime.ToString()}";
                 var logNotify = new LogNotify(Message, LogType.RemoveBooking, DateTime.Now, false, booking.UserId);
                 _logNotifyRepository.Add(logNotify);
 
-                _logNotifyRepository.SaveChangesAsync();
+                await _logNotifyRepository.SaveChangesAsync();
             }
 
 

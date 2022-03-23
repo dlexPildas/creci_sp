@@ -12,14 +12,14 @@ namespace CreciSP.Domain.Models
         public int Id { get; set; }
 
         public string Message { get; private set; }
-        public LogType Type { get; private set; } = LogType.RemoveBooking;
+        public LogType Type { get; private set; }
         public DateTime ActionDate { get; private set; }
         public bool IsViewed { get; private set; } = false;
 
         public Guid ToUserId { get; private set; }
 
         public virtual User ToUser { get; private set; }
-
+        public LogNotify() { }
 
         public LogNotify(string message, LogType type, DateTime actionDate, bool isViewed, Guid toUserId)
         {
