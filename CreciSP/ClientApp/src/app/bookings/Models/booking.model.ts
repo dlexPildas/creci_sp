@@ -6,4 +6,5 @@ export class BookingModel {
   numberRoom: string;
   userdId: string;
   roomId: string;
+  equipmentDescription: string;
 }

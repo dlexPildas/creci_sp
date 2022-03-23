@@ -10,6 +10,7 @@ import { UserTypeEnum } from 'src/app/users/models/user-type-enum';
 import { CreateEquipamentComponent } from '../create-equipament/create-equipament.component';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { LinkRoomEquipmentComponent } from '../link-room-equipment/link-room-equipment.component';
+import { ListEquipmentComponent } from '../list-equipment/list-equipment.component';
 
 @Component({
   selector: 'app-room-list',
@@ -130,6 +131,18 @@ export class RoomListComponent implements OnInit {
     this.dialog.open(LinkRoomEquipmentComponent, {
       width: '500px',
       data: {
+        idRoom: idRoom
+      }
+    })
+      .afterClosed()
+      .subscribe();
+  }
+
+  showRoomEquipments(idRoom: string, numberRoom: number): void {
+    this.dialog.open(ListEquipmentComponent, {
+      width: '500px',
+      data: {
+        numberRoom: numberRoom,
         idRoom: idRoom
       }
     })
