@@ -9,6 +9,7 @@ import { CreateRoomComponent } from './components/create-room/create-room.compon
 import { NgxMaskModule } from 'ngx-mask';
 import { CreateEquipamentComponent } from './components/create-equipament/create-equipament.component';
 import { LinkRoomEquipmentComponent } from './components/link-room-equipment/link-room-equipment.component';
+import { ListEquipmentComponent } from './components/list-equipment/list-equipment.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { LinkRoomEquipmentComponent } from './components/link-room-equipment/lin
     CreateRoomComponent,
     CreateEquipamentComponent,
     LinkRoomEquipmentComponent,
+    ListEquipmentComponent,
   ],
   imports: [
     CommonModule,

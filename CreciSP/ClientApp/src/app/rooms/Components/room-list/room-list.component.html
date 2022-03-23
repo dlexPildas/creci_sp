@@ -89,8 +89,12 @@
         <mat-icon>delete</mat-icon>
       </button>
 
-      <button *ngIf="isAdm" class="" (click)="linkEquipamentToRoom(element.id)" mat-mini-fab aria-label="Example icon button with a home icon">
+      <button *ngIf="isAdm" class="mr-3" (click)="linkEquipamentToRoom(element.id)" mat-mini-fab aria-label="Example icon button with a home icon">
         <mat-icon>sync</mat-icon>
+      </button>
+
+      <button *ngIf="isAdm" class="" (click)="showRoomEquipments(element.id, element.number)" mat-mini-fab aria-label="Example icon button with a home icon">
+        <mat-icon>list</mat-icon>
       </button>
     </td>
   </ng-container>

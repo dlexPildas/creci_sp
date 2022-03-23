@@ -24,13 +24,15 @@ namespace CreciSP.Domain.Services.BookingRepository
 
         public async Task<ICollection<Booking>> GetBookingsByFilter(BookingFilter filter)
         {
-            var cmd = $@"SELECT [Id]
-                               ,[Date]
-                               ,[StartTime]
-                               ,[EndTime]
-                               ,[RoomId]
-                               ,[UserId]
+            var cmd = $@"SELECT b.[Id]
+                               ,b.[Date]
+                               ,b.[StartTime]
+                               ,b.[EndTime]
+                               ,b.[RoomId]
+                               ,b.[UserId]
+                               ,r.[Number] NumberRoom
                            FROM [dbo].[Booking] b
+                           INNER JOIN Room r on b.RoomId = r.Id
                            WHERE 1=1
                             {(filter.Date != default ? $"AND (b.[Date] = {filter.Date?.ToString("dd/MM/yyyy")})" : "")}
                             {(filter.RoomId != default ? $"AND ( b.[RoomId] = {filter.RoomId})" : "")}

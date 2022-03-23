@@ -17,8 +17,12 @@ export class EquipmentService {
     return this.http.post<boolean>(`${this.base_url}`, equipment);
   }
 
-  getEquipments(): Observable<EquipmentModel[]> {
-    return this.http.get<EquipmentModel[]>(`${this.base_url}`);
+  getEquipments(roomId: string = ''): Observable<EquipmentModel[]> {
+    return this.http.get<EquipmentModel[]>(`${this.base_url}`, {
+      params:{
+        roomId: roomId
+      }
+    });
   }
 
   linkToRoom(idRoom: string, equipmentId: string) {
