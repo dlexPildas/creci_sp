@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace CreciSP.Domain.Enum
 {
-    public enum RoomTypeEnum : int
+    public enum LogType
     {
-        Meeting = 1,
-        Common = 2
+        RemoveBooking = 1,
     }
 }

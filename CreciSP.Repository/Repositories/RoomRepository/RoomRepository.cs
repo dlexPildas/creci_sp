@@ -43,11 +43,12 @@ namespace CreciSP.Domain.Services.RoomRepository
                                ,[Type]
                                ,[Status]
                            FROM [dbo].[Room] r
-                           WHERE (@Number is null OR r.[Number] = @Number ) AND
-                           (@Floor is null OR r.[Floor] = @Floor ) AND
-                           (@Capacity is null OR r.[Capacity] = @Capacity ) AND
-                           (@Type is null OR r.[Type] = @Type ) AND
-                           (@Status is null OR r.[Type] = @Status )";
+                           WHERE 1=1
+                            {(filter.Number != default ? $"AND (r.[Number] = {filter.Number})" : "")}
+                            {(filter.Floor != default ? $"AND ( r.[Floor] = {filter.Floor})" : "")}
+                            {(filter.Capacity != default ? $"AND (r.[Capacity] = {filter.Capacity})" : "")}
+                            {(filter.Type != default ? $"AND (r.[Type] = {(int)filter.Type})" : "")}
+                            {(filter.Status != default ? $"AND (r.[Status] = {(filter.Status.Value ? 1 : 0)})" : "")}";
 
             var parameters = new
             {

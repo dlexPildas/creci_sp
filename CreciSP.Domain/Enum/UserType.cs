@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CreciSP.Domain.Enum
 {
-    public enum UserTypeEnum : int
+    public enum UserType : int
     {
         Administrator = 1,
         Common = 2

@@ -59,7 +59,7 @@ namespace _06.CreciSP.Test.Models
             // Arrange
             AutoMockerFixture autoMockerFixture = new AutoMockerFixture();
             var user = autoMockerFixture.user;
-            var newUser = new User(new Guid(), "NameAtualizado", "01234567890", "email@atualizado.com", UserTypeEnum.Common, true, "0123456789");
+            var newUser = new User(new Guid(), "NameAtualizado", "01234567890", "email@atualizado.com", UserType.Common, true, "0123456789");
 
             // Act
             user.UpdateUser(newUser);
