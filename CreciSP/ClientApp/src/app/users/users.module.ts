@@ -9,6 +9,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { SharedModule } from '../shared/shared.module';
+import { ChangePasswordUserComponent } from './components/change-password-user/change-password-user.component';
 
 
 
@@ -16,7 +17,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     UserPanelComponent,
     UserListComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    ChangePasswordUserComponent
   ],
   imports: [
     CommonModule,

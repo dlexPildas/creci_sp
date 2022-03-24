@@ -88,6 +88,10 @@
         <mat-icon>edit</mat-icon>
       </button>
 
+      <button *ngIf="element.id === currentUser.id" color="primary" (click)="changePassword(element.id)" class="mr-1" mat-mini-fab aria-label="Example icon button with a home icon">
+        <mat-icon>password</mat-icon>
+      </button>
+
       <button *ngIf="!element.status && isAdm" (click)="activeUser(element.id)" class="active-button mr-1" mat-mini-fab aria-label="Example icon button with a home icon">
         <mat-icon>done</mat-icon>
       </button>

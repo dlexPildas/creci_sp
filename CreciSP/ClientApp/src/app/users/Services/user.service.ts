@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 
 import { UserModel } from './../models/user.model';
+import { UserChangePassword } from '../models/user-change-password.model';
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,9 @@ export class UserService {
 
   inactiveUser(id: string ): Observable<boolean> {
     return this.http.put<boolean>(`${this.base_url}/${id}/inactive`, {});
+  }
+
+  changePassword(user: UserChangePassword): Observable<boolean> {
+    return this.http.put<boolean>(`${this.base_url}/change-password`, user);
   }
 }

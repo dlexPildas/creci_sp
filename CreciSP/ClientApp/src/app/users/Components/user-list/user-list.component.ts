@@ -1,3 +1,4 @@
+import { ChangePasswordUserComponent } from './../change-password-user/change-password-user.component';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { UserModel } from './../../models/user.model';
@@ -71,6 +72,19 @@ export class UserListComponent implements OnInit {
 
   editUser(idUser: string): void {
     this.dialog.open(CreateUserComponent, {
+      data: { idUser }
+    })
+      .afterClosed()
+      .subscribe(result => {
+        if (result) {
+          this.getUsers();
+        }
+      });
+  }
+
+  changePassword(idUser: string): void {
+    this.dialog.open(ChangePasswordUserComponent, {
+      width: '400px',
       data: { idUser }
     })
       .afterClosed()

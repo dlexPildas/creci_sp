@@ -32,13 +32,17 @@ export class LoginComponent implements OnInit {
     if (!this.email) return this.alertService.alertMessage('Informe a senha!');
 
     this.userService.getUsers({ email: this.email, password: this.password } as UserFilterModel)
-      .subscribe(user => {
-        if (user.length > 0) {
-          this.authService.login(user[0]);
-          this.router.navigateByUrl('users');
-          this.dialogRef.close()
-        }
-      })
+      .subscribe(
+        user => {
+          if (user.length > 0) {
+            this.authService.login(user[0]);
+            this.router.navigateByUrl('users');
+            this.dialogRef.close()
+          } else {
+            this.alertService.alertMessage('Usuário não encontrado! Verifique a senha e o email');
+          }
+        },
+        error => this.alertService.alertMessage('Um erro ocorreu', error))
   }
 
 
