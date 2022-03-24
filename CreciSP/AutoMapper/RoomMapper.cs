@@ -8,7 +8,8 @@ namespace CreciSP.Mvc.AutoMapper
     {
         public RoomMapper()
         {
-            CreateMap<RoomCreateDto, Room>();
+            CreateMap<RoomCreateDto, Room>()
+                .ForMember(x => x.Status, y => y.MapFrom(z => true));
         }
     }
 }

@@ -1,3 +1,4 @@
+import { AlertService } from 'src/app/shared/services/alert.service';
 import { UserTypeEnum } from './../../models/user-type-enum';
 import { UserService } from './../../Services/user.service';
 import { Component, Inject, OnInit } from '@angular/core';
@@ -17,7 +18,7 @@ export class CreateUserComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private _snackBar: MatSnackBar,
+    private alertService: AlertService,
     public dialogRef: MatDialogRef<CreateUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private userService: UserService
@@ -65,28 +66,20 @@ export class CreateUserComponent implements OnInit {
   save(): void {
     const values = this.userForm.value;
 
-    if (values.password !== values.confirmPassword) return this.alertMessage('As senhas devem ser iguais');
+    if (values.password !== values.confirmPassword) return this.alertService.alertMessage('As senhas devem ser iguais');
 
-    if (values.email !== values.confirmEmail) return this.alertMessage('Os emails devem ser iguais');
+    if (values.email !== values.confirmEmail) return this.alertService.alertMessage('Os emails devem ser iguais');
 
     if (this.idUser) values.id = this.idUser;
 
     this.userService.saveUser(values)
       .subscribe(
         () => {
-          this.alertMessage('Operação realizada com sucesso!')
+          this.alertService.alertMessage('Operação realizada com sucesso!')
           this.dialogRef.close(true);
         },
-        () => this.alertMessage('Erro ao realizar operação')
+        error => this.alertService.alertMessage('Erro ao realizar operação', error)
       )
-  }
-
-  alertMessage(message: string): void {
-    this._snackBar.open(message, 'Fechar', {
-      horizontalPosition: 'end',
-      verticalPosition: 'bottom',
-      duration: 5000,
-    });
   }
 
 }

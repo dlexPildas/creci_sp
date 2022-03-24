@@ -45,7 +45,7 @@ export class CreateRoomComponent implements OnInit {
           this.alertService.alertMessage('Sala criada com sucesso!')
           this.dialogRef.close(true);
         },
-        () => this.alertService.alertMessage('Erro ao criar sala')
+        error => this.alertService.alertMessage('Erro ao criar sala', error)
       )
   }
 }

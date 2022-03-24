@@ -36,7 +36,7 @@ export class LinkRoomEquipmentComponent implements OnInit {
           this.alertService.alertMessage('Vículo realizado com sucesso!')
           this.dialogRef.close(true);
         },
-        () => this.alertService.alertMessage('Erro ao vincular equipamento')
+        error => this.alertService.alertMessage('Erro ao vincular equipamento', error)
       )
   }
 

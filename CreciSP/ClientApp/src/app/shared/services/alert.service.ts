@@ -10,11 +10,23 @@ export class AlertService {
     private _snackBar: MatSnackBar,
   ) { }
 
-  alertMessage(message: string): void {
-    this._snackBar.open(message, 'Fechar', {
-      horizontalPosition: 'end',
-      verticalPosition: 'bottom',
-      duration: 5000,
-    });
+  alertMessage(message: string, error: any = null): void {
+    if (error?.error?.errors?.Domain) {
+      error?.error?.errors?.Domain.map(x => {
+        this._snackBar.open(x, 'Fechar', {
+          horizontalPosition: 'end',
+          verticalPosition: 'bottom',
+          duration: 5000,
+        });
+      });
+    } else {
+      this._snackBar.open(message, 'Fechar', {
+        horizontalPosition: 'end',
+        verticalPosition: 'bottom',
+        duration: 5000,
+      });
+    }
+
+
   }
 }

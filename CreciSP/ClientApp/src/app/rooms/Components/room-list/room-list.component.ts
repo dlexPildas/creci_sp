@@ -1,3 +1,4 @@
+import { AlertService } from 'src/app/shared/services/alert.service';
 import { ModalConfimationComponent } from './../../../shared/components/modal-confimation/modal-confimation.component';
 import { RoomType } from './../../Models/room-type.model';
 import { Component, OnInit } from '@angular/core';
@@ -25,7 +26,7 @@ export class RoomListComponent implements OnInit {
   isAdm = false;
 
   constructor(
-    private _snackBar: MatSnackBar,
+    private alertService: AlertService,
     public dialog: MatDialog,
     private roomService: RoomService,
     private authService: AuthService
@@ -48,19 +49,11 @@ export class RoomListComponent implements OnInit {
     this.roomService.activeRoom(idRoom)
       .subscribe(
         () => {
-          this._snackBar.open('Sala ativada com sucesso', 'Fechar', {
-            horizontalPosition: 'end',
-            verticalPosition: 'bottom',
-            duration: 5000,
-          });
+          this.alertService.alertMessage('Sala ativada com sucesso');
           this.getRooms();
         },
         error => {
-          this._snackBar.open('Erro ao ativar sala', 'Fechar', {
-            horizontalPosition: 'end',
-            verticalPosition: 'bottom',
-            duration: 5000,
-          });
+          this.alertService.alertMessage('Erro ao ativar sala', error);
         }
       );
   }
@@ -69,19 +62,11 @@ export class RoomListComponent implements OnInit {
     this.roomService.inactiveRoom(idRoom)
       .subscribe(
         () => {
-          this._snackBar.open('Sala inativada com sucesso', 'Fechar', {
-            horizontalPosition: 'end',
-            verticalPosition: 'bottom',
-            duration: 5000,
-          });
+          this.alertService.alertMessage('Sala inativada com sucesso');
           this.getRooms();
         },
         error => {
-          this._snackBar.open('Erro ao inativar sala', 'Fechar', {
-            horizontalPosition: 'end',
-            verticalPosition: 'bottom',
-            duration: 5000,
-          });
+          this.alertService.alertMessage('Erro ao inativar sala', error);
         }
       );
   }
@@ -104,19 +89,11 @@ export class RoomListComponent implements OnInit {
     this.roomService.removeRoom(idRoom)
       .subscribe(
         () => {
-          this._snackBar.open('Sala excluída com sucesso', 'Fechar', {
-            horizontalPosition: 'end',
-            verticalPosition: 'bottom',
-            duration: 5000,
-          });
+          this.alertService.alertMessage('Sala excluída com sucesso');
           this.getRooms();
         },
         error => {
-          this._snackBar.open('Erro ao excluir sala', 'Fechar', {
-            horizontalPosition: 'end',
-            verticalPosition: 'bottom',
-            duration: 5000,
-          });
+          this.alertService.alertMessage('Erro ao excluir sala', error);
         }
       );
   }

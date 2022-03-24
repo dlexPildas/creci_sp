@@ -7,6 +7,9 @@
         <ul [style.margin.px]="0">
           <li class="list mb-2" *ngFor="let item of equipments">
             <strong>{{item.number}} - {{item.type === 1 ? 'Monitor' : item.type === 2 ? 'Projetor' : 'Telefone'}}</strong> | {{item.description}}
+            <button (click)="removeEquipment(item.id)" class="inactive-button ml-3" mat-mini-fab aria-label="Example icon button with a home icon">
+              <mat-icon>delete</mat-icon>
+            </button>
           </li>
         </ul>
       </div>

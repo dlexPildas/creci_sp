@@ -35,7 +35,7 @@ namespace CreciSP.Mvc.Controllers
         /// <param name="user"></param>
         /// <returns>True se operação for realizada com Sucesso</returns>
         [HttpPost]
-        public async Task<IActionResult> Create(EquipmentCreateDto userDto)
+        public async Task<IActionResult> Create(UserCreateDto userDto)
         {
             var user = _mapper.Map<User>(userDto);
 

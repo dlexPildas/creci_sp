@@ -1,3 +1,4 @@
+import { AlertService } from 'src/app/shared/services/alert.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EquipmentModel } from '../../Models/equipment.model';
@@ -15,6 +16,7 @@ export class ListEquipmentComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ListEquipmentComponent>,
     private equipmentService: EquipmentService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit(): void {
@@ -24,6 +26,17 @@ export class ListEquipmentComponent implements OnInit {
   getEquipments(): void {
     this.equipmentService.getEquipments(this.data.idRoom)
       .subscribe(result => this.equipments = result)
+  }
+
+  removeEquipment(id: string): void {
+    this.equipmentService.removeEquipment(id)
+      .subscribe(
+        () => {
+          this.alertService.alertMessage('Vículo removido com sucesso!')
+          this.dialogRef.close(true);
+        },
+        error => this.alertService.alertMessage('Erro ao desvincular equipamento', error)
+      )
   }
 
 }

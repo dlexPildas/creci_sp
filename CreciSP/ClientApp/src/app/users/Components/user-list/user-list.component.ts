@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { UserModel } from './../../models/user.model';
 import { Component, OnInit } from '@angular/core';
@@ -7,7 +8,6 @@ import { UserFilterModel } from '../../models/user-filter.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateUserComponent } from '../create-user/create-user.component';
-import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-user-list',
@@ -24,7 +24,6 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private _snackBar: MatSnackBar,
     public alertService: AlertService,
     public dialog: MatDialog,
     private authService: AuthService
@@ -65,7 +64,7 @@ export class UserListComponent implements OnInit {
           this.getUsers();
         },
         error => {
-          this.alertService.alertMessage('Erro ao inativar um usuário');
+          this.alertService.alertMessage('Erro ao inativar um usuário', error);
         }
       );
   }

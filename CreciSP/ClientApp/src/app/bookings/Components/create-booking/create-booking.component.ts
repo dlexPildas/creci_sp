@@ -61,7 +61,7 @@ export class CreateBookingComponent implements OnInit {
           this.alertService.alertMessage('Reserva criada com sucesso!')
           this.dialogRef.close(true);
         },
-        () => this.alertService.alertMessage('Erro ao criar reserva')
+        error => this.alertService.alertMessage('Erro ao criar reserva', error)
       )
   }
 }

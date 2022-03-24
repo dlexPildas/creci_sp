@@ -43,7 +43,7 @@ export class CreateEquipamentComponent implements OnInit {
           this.alertService.alertMessage('Equipamento criado com sucesso!')
           this.dialogRef.close(true);
         },
-        () => this.alertService.alertMessage('Erro ao criar equipamento')
+        error => this.alertService.alertMessage('Erro ao criar equipamento', error)
       )
   }
 

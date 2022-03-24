@@ -25,6 +25,10 @@ export class EquipmentService {
     });
   }
 
+  removeEquipment(id: string) {
+    return this.http.put<boolean>(`${this.base_url}/${id}/unlinkroomequipment`, {});
+  }
+
   linkToRoom(idRoom: string, equipmentId: string) {
     return this.http.put<boolean>(`${this.base_url}/${equipmentId}/link-room-equipment?roomId=${idRoom}`, {});
   }
