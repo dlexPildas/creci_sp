@@ -34,6 +34,14 @@ namespace CreciSP.Application.Services.EquipmentService
         /// <returns>True se operação for realizada com Sucesso</returns>
         public async Task<bool> Create(Equipment equipment)
         {
+            var alreadyExistEquipmentWithNumber = await _equipmentRepository.GetEquipmentsByFilters(new EquipmentFilter { Number = equipment.Number });
+
+            if(alreadyExistEquipmentWithNumber?.Count > 0)
+            {
+                AddValidationFailure($"Equipamento com número {equipment.Number} já existe!");
+                return false;
+            }
+
             _equipmentRepository.Add(equipment);
 
             return await _equipmentRepository.SaveChangesAsync();

@@ -44,6 +44,10 @@ namespace CreciSP.Mvc.Controllers
 
             var result = await _equipmentService.Create(equipment);
 
+            ModelState.AddValidationResult(_equipmentService.ValidationResult());
+            if (!ModelState.IsValid)
+                return Conflict(ModelState.GetValidationProblemDetails());
+
             return Ok(result);
         }
 
