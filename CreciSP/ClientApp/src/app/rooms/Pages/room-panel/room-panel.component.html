@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <app-room-list #roomList></app-room-list>
+    </div>
+  </div>
+</div>
+
+<button *ngIf="isAdm" (click)="openModalCreateRoom()" color="primary" class="button-add" mat-fab>
+  <mat-icon>add</mat-icon>
+</button>

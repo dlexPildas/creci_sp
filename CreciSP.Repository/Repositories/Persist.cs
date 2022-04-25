@@ -37,6 +37,8 @@ namespace CreciSP.Repository.Repositories
             _dataContext.RemoveRange(entity);
         }
 
+        public DataContext Context { get; private set; }
+
         public async Task<bool> SaveChangesAsync()
         {
             return (await _dataContext.SaveChangesAsync()) > 0;

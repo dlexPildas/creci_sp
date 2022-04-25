@@ -1,0 +1,105 @@
+<header class="header mb-1">
+  <mat-icon>room</mat-icon>
+  <h1>Salas</h1>
+</header>
+
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Número da Sala</mat-label>
+      <input [(ngModel)]="filters.number" matInput>
+    </mat-form-field>
+  </div>
+
+  <div class="col-sm-12 col-md-4">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Andar</mat-label>
+      <input [(ngModel)]="filters.floor" matInput>
+    </mat-form-field>
+  </div>
+
+  <div class="col-sm-12 col-md-4">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Capacidade</mat-label>
+      <input [(ngModel)]="filters.capacity" matInput>
+    </mat-form-field>
+  </div>
+
+  <div class="col-sm-12 col-md-4">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Tipo da Sala</mat-label>
+      <mat-select [(ngModel)]="filters.type" disableRipple>
+        <mat-option [value]="roomType.Todos">Todos</mat-option>
+        <mat-option [value]="roomType.Meeting">Reunião</mat-option>
+        <mat-option [value]="roomType.Common">Comum</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-sm-12 col-md-12 text-align-end ">
+    <button class="mr-3" (click)="createEquipament()" *ngIf="isAdm" mat-raised-button>Cadastrar Equipamento</button>
+
+    <button (click)="getRooms()" mat-raised-button color="primary">Buscar</button>
+  </div>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mb-3">
+  <caption>Tabela de Salas</caption>
+   <ng-container matColumnDef="number">
+    <th mat-header-cell *matHeaderCellDef> Número da Sala </th>
+    <td mat-cell *matCellDef="let element"> {{element.number}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="floor">
+    <th mat-header-cell *matHeaderCellDef> Andar </th>
+    <td mat-cell *matCellDef="let element"> {{element.floor}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="capacity">
+    <th mat-header-cell *matHeaderCellDef> Capacidade </th>
+    <td mat-cell *matCellDef="let element"> {{element.capacity}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef> Tipo </th>
+    <td mat-cell *matCellDef="let element"> {{element.type === roomType.Meeting ? 'Reunião' : 'Comum'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element"> {{element.status ? 'Ativo' : 'Inativo'}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>  </th>
+    <td class="text-align" mat-cell *matCellDef="let element">
+      <button *ngIf="!element.status && isAdm" (click)="activeRoom(element.id)" class="active-button mr-3" mat-mini-fab aria-label="Example icon button with a home icon">
+        <mat-icon>done</mat-icon>
+      </button>
+
+      <button *ngIf="element.status && isAdm" (click)="inactiveRoom(element.id)" class="inactive-button mr-3" mat-mini-fab aria-label="Example icon button with a home icon">
+        <mat-icon>cancel</mat-icon>
+      </button>
+
+      <button *ngIf="isAdm" class="mr-3" (click)="canDeleteRoom(element.id)" mat-mini-fab aria-label="Example icon button with a home icon">
+        <mat-icon>delete</mat-icon>
+      </button>
+
+      <button *ngIf="isAdm" class="mr-3" (click)="linkEquipamentToRoom(element.id)" mat-mini-fab aria-label="Example icon button with a home icon">
+        <mat-icon>sync</mat-icon>
+      </button>
+
+      <button *ngIf="isAdm" class="" (click)="showRoomEquipments(element.id, element.number)" mat-mini-fab aria-label="Example icon button with a home icon">
+        <mat-icon>list</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

@@ -16,6 +16,7 @@ namespace CreciSP.Domain.Validators
             RuleFor(x => x.StartTime).NotNull().NotEmpty().WithMessage(@"Informe horário de início!");
             RuleFor(x => x.EndTime).NotNull().NotEmpty().WithMessage(@"Informe horário final!");
             RuleFor(x => x.RoomId).NotNull().NotEmpty().WithMessage(@"Infome a Sala!");
+            RuleFor(x => x.UserId).NotNull().NotEmpty().WithMessage(@"Infome o Usuário!");
         }
     }
 }

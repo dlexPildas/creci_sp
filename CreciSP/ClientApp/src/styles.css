@@ -14,3 +14,23 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.w-100 {
+  width: 100%;
+}
+
+.text-align-end {
+  text-align: end;
+  justify-content: flex-end;
+}
+
+.active-button {
+  background: #4ea433ad !important;
+}
+
+.inactive-button {
+  background: #dc3545d4 !important;
+}

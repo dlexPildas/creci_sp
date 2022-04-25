@@ -7,6 +7,15 @@ using CreciSP.Application.Services.UserService;
 using CreciSP.Repository.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using _03.CreciSP.Domain.Notifier;
+using CreciSP.Domain.Services.LogNotifyRepository;
+using CreciSP.Application.Services.LogNotifyService;
+using CreciSP.Domain.Services.LogNotifyRepository;
+using CreciSP.Domain.Validators;
+using FluentValidation;
+using CreciSP.Domain.Models;
+using CreciSP.Application.Services.EquipmentService;
+using CreciSP.Domain.Services.EquipmentRepository;
 
 namespace CreciSP.CrossCutting
 {
@@ -18,14 +27,28 @@ namespace CreciSP.CrossCutting
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRoomService, RoomService>();
             services.AddScoped<IBookingService, BookingService>();
+            services.AddScoped<ILogNotifyService, LogNotifyService>();
+            services.AddScoped<IEquipmentService, EquipmentService>();
             #endregion
 
             #region Repositories
-            services.AddScoped<IPersist, Persist>();
+            services.AddScoped<IPersist, Persist>(); 
             services.AddScoped<IReadConnection, ReadConnection>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRoomRepository, RoomRepository>();
+            services.AddScoped<ILogNotifyRepository, LogNotifyRepository>();
             services.AddScoped<IBookingRepository, BookingRepository>();
+            services.AddScoped<IEquipmentRepository, EquipmentRepository>();
+            #endregion
+
+            services.AddScoped<INotifierService, NotifierService>();
+
+
+            #region Validators
+            services.AddTransient<IValidator<User>, UserValidator>();
+            services.AddTransient<IValidator<Room>, RoomValidator>();
+            services.AddTransient<IValidator<Booking>, BookingValidator>();
+            services.AddTransient<IValidator<Equipment>, EquipmentValidator>();
             #endregion
         }
     }

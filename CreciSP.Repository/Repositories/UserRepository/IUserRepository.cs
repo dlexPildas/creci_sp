@@ -1,4 +1,7 @@
-﻿using CreciSP.Repository.Repositories;
+﻿using CreciSP.Domain.Enum;
+using CreciSP.Domain.Filters;
+using CreciSP.Domain.Models;
+using CreciSP.Repository.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +12,8 @@ namespace CreciSP.Domain.Services.UserRepository
 {
     public interface IUserRepository : IPersist
     {
+        Task<ICollection<User>> GetUsersByFilters(UserFilter userFilter);
+
+        Task<User> GetUserById(Guid id);
     }
 }

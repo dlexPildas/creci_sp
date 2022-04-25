@@ -49,6 +49,64 @@ namespace CreciSP.Repository.Migrations
                     b.ToTable("Booking");
                 });
 
+            modelBuilder.Entity("CreciSP.Domain.Models.Equipment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("RoomId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("Equipment");
+                });
+
+            modelBuilder.Entity("CreciSP.Domain.Models.LogNotify", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("ActionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsViewed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<Guid>("ToUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ToUserId");
+
+                    b.ToTable("LogNotify");
+                });
+
             modelBuilder.Entity("CreciSP.Domain.Models.Room", b =>
                 {
                     b.Property<Guid>("Id")
@@ -63,6 +121,9 @@ namespace CreciSP.Repository.Migrations
 
                     b.Property<int>("Number")
                         .HasColumnType("int");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");
@@ -130,14 +191,40 @@ namespace CreciSP.Repository.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("CreciSP.Domain.Models.Equipment", b =>
+                {
+                    b.HasOne("CreciSP.Domain.Models.Room", "Room")
+                        .WithMany("Equipments")
+                        .HasForeignKey("RoomId")
+                        .HasConstraintName("FK_Room_Equipment");
+
+                    b.Navigation("Room");
+                });
+
+            modelBuilder.Entity("CreciSP.Domain.Models.LogNotify", b =>
+                {
+                    b.HasOne("CreciSP.Domain.Models.User", "ToUser")
+                        .WithMany("LogNotifies")
+                        .HasForeignKey("ToUserId")
+                        .HasConstraintName("FK_ToUser_LogNotify")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ToUser");
+                });
+
             modelBuilder.Entity("CreciSP.Domain.Models.Room", b =>
                 {
                     b.Navigation("Bookings");
+
+                    b.Navigation("Equipments");
                 });
 
             modelBuilder.Entity("CreciSP.Domain.Models.User", b =>
                 {
                     b.Navigation("Bookings");
+
+                    b.Navigation("LogNotifies");
                 });
 #pragma warning restore 612, 618
         }
